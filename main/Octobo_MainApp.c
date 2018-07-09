@@ -6,6 +6,9 @@
 #include "ble_spp_server.h"
 #include "Keyboard.h"
 #include "driver/touch_pad.h"
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
+#include "driver/gpio.h"
 
 
 
@@ -19,9 +22,23 @@
 
 #define TOUCH_THRESH_NO_USE   (0)
 #define TOUCHPAD_FILTER_TOUCH_PERIOD (10)
-const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
-const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
+static const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
+static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
 							       KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
+
+
+
+#define DEFAULT_VREF    1100        //Use adc2_vref_to_gpio() to obtain a better estimate
+#define NO_OF_SAMPLES   64          //Multisampling
+static esp_adc_cal_characteristics_t *adc_chars;
+static const adc_channel_t channel = ADC_CHANNEL_7;     //GPIO34 if ADC1, GPIO14 if ADC2
+static const adc_atten_t atten = ADC_ATTEN_DB_0;
+static const adc_unit_t unit = ADC_UNIT_1;
+
+
+
+static void BatteyCheck(void);
+
 void app_main()
 {
 
@@ -85,16 +102,25 @@ void app_main()
 
 
 
+	adc1_config_width(ADC_WIDTH_BIT_12);
+	adc1_config_channel_atten(channel, atten);
+
+	    //Characterize ADC
+    adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
+    esp_adc_cal_value_t val_type = esp_adc_cal_characterize(unit, atten, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
+ 
+
 	Ble_spp_Server_Start();
 
 
 	for(;;)
 	{
+	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
 
-	  
 
+	  
 	}
 
 }
@@ -197,7 +223,23 @@ void app_main()
 
 
 
+void BatteyCheck(void)
+{
+	uint32_t adc_reading = 0;
+	 //Multisampling
+	 for (int i = 0; i < NO_OF_SAMPLES; i++) 
+	 	{
+			 adc_reading += adc1_get_raw((adc1_channel_t)channel);
+		}
+	 
+	 adc_reading /= NO_OF_SAMPLES;
+	 //Convert adc_reading to voltage in mV
+	 uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
+	 printf("Raw: %d\tVoltage: %dmV\n", adc_reading, voltage);
 
+
+
+}
 
 
 
