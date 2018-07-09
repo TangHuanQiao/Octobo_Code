@@ -5,6 +5,8 @@
 #include "freertos/task.h"
 #include "ble_spp_server.h"
 #include "Keyboard.h"
+#include "driver/touch_pad.h"
+
 
 
 #define HOME_KEY_IO     34
@@ -15,6 +17,11 @@
 
 
 
+#define TOUCH_THRESH_NO_USE   (0)
+#define TOUCHPAD_FILTER_TOUCH_PERIOD (10)
+const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
+const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
+							       KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
 void app_main()
 {
 
@@ -65,13 +72,26 @@ void app_main()
 	io_conf.pull_down_en= 1;
 	gpio_config(&io_conf);	
 
+
+
+	 // Initialize touch pad peripheral.
+    // The default fsm mode is software trigger mode.
+    touch_pad_init();
+	touch_pad_set_voltage(TOUCH_HVOLT_2V7, TOUCH_LVOLT_0V5, TOUCH_HVOLT_ATTEN_1V);
+	for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
+	touch_pad_config(Touch_Ch_Tab[i], TOUCH_THRESH_NO_USE);
+	
+	touch_pad_filter_start(TOUCHPAD_FILTER_TOUCH_PERIOD);
+
+
+
 	Ble_spp_Server_Start();
 
 
 	for(;;)
 	{
 	  keyScanTask();
-	  vTaskDelay(30/ portTICK_PERIOD_MS);
+	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
 
 	  
 
@@ -96,9 +116,50 @@ void app_main()
 			case KEY_VAL_POWER_PRESS:
 				esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
 				printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
-				vTaskDelay(300 / portTICK_PERIOD_MS);	  
+				vTaskDelay(100 / portTICK_PERIOD_MS);	  
 				esp_deep_sleep_start();
 			break;
+
+			case KEY_VAL_TOUCH1_DOWN:
+			case KEY_VAL_TOUCH2_DOWN:			
+			case KEY_VAL_TOUCH3_DOWN:
+			case KEY_VAL_TOUCH4_DOWN:
+			case KEY_VAL_TOUCH5_DOWN:			
+			case KEY_VAL_TOUCH6_DOWN:
+			case KEY_VAL_TOUCH7_DOWN:			
+			case KEY_VAL_TOUCH8_DOWN:
+				
+			printf("------TOUCH is Down-------\r\n");
+
+			break;
+
+
+			case KEY_VAL_TOUCH1_SHORT_UP:
+			case KEY_VAL_TOUCH2_SHORT_UP:			
+			case KEY_VAL_TOUCH3_SHORT_UP:
+			case KEY_VAL_TOUCH4_SHORT_UP:
+			case KEY_VAL_TOUCH5_SHORT_UP:			
+			case KEY_VAL_TOUCH6_SHORT_UP:
+			case KEY_VAL_TOUCH7_SHORT_UP:			
+			case KEY_VAL_TOUCH8_SHORT_UP:
+						
+			printf("--TOUCH is SHORT_UP--\r\n");
+
+			break;
+
+			case KEY_VAL_TOUCH1_LONG_UP:
+			case KEY_VAL_TOUCH2_LONG_UP:			
+			case KEY_VAL_TOUCH3_LONG_UP:
+			case KEY_VAL_TOUCH4_LONG_UP:
+			case KEY_VAL_TOUCH5_LONG_UP:			
+			case KEY_VAL_TOUCH6_LONG_UP:
+			case KEY_VAL_TOUCH7_LONG_UP:			
+			case KEY_VAL_TOUCH8_LONG_UP:
+						
+			printf("--TOUCH is LONG_UP--\r\n");
+
+			break;			
+
 
 		}
 }
@@ -107,9 +168,27 @@ void app_main()
 
  void KeyValConvert(UINT32 *pKeyVal)
 {
+	    uint16_t touch_filter_value;
+
 
 		if(gpio_get_level(HOME_KEY_IO)!=0)			
 			*pKeyVal|=KEY_VAL_POWER;
+		
+  		for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
+		{
+			touch_pad_read_filtered(Touch_Ch_Tab[i], &touch_filter_value);
+
+			if(touch_filter_value<600)			
+				{
+				 printf("TOUCH%d:[%4d]\n", i+1, touch_filter_value);
+				 *pKeyVal|=Touch_KEY_VAL_Tab[i];
+				}
+
+
+
+
+				
+  		}
 			
 		
 }
