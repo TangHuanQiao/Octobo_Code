@@ -10,7 +10,7 @@
 #include "esp_adc_cal.h"
 #include "driver/gpio.h"
 #include "driver/dac.h"
-
+#include "LED_Ctr.h"
 
 
 
@@ -115,10 +115,12 @@ void app_main()
  
 
 	Ble_spp_Server_Start();
-
+	
+	LED_Ctr_Init();
 
 	for(;;)
 	{
+	  LED_Ctr_Set();
 	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);

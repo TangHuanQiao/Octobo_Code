@@ -87,7 +87,8 @@ Octobo_MainApp.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/adc_channel.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp_adc_cal/include/esp_adc_cal.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/dac.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/dac_channel.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/dac_channel.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -264,4 +265,6 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp_ad
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/dac.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/dac_channel.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 /home/Administrator/esp/Octobo_Code/main/./Octobo_MainApp.c:
