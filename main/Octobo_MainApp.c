@@ -9,6 +9,8 @@
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 #include "driver/gpio.h"
+#include "driver/dac.h"
+
 
 
 
@@ -100,14 +102,16 @@ void app_main()
 	
 	touch_pad_filter_start(TOUCHPAD_FILTER_TOUCH_PERIOD);
 
+	
+
+	dac_output_enable(DAC_CHANNEL_1);
+	dac_output_voltage( DAC_CHANNEL_1, 20);
 
 
 	adc1_config_width(ADC_WIDTH_BIT_12);
 	adc1_config_channel_atten(channel, atten);
-
-	    //Characterize ADC
     adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
-    esp_adc_cal_value_t val_type = esp_adc_cal_characterize(unit, atten, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
+    esp_adc_cal_characterize(unit, atten, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
  
 
 	Ble_spp_Server_Start();
@@ -235,7 +239,7 @@ void BatteyCheck(void)
 	 adc_reading /= NO_OF_SAMPLES;
 	 //Convert adc_reading to voltage in mV
 	 uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
-	 printf("Raw: %d\tVoltage: %dmV\n", adc_reading, voltage);
+
 
 
 
