@@ -39,61 +39,34 @@ static const adc_unit_t unit = ADC_UNIT_1;
 
 
 
-static void BatteyCheck(void);
 
-void app_main()
+
+void BSP_Gpio_Init(void)
 {
-
 	gpio_config_t io_conf;
-	uint8_t HOME_KEY_FliterCnt=0;
-
-
-	esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
-
-	if (esp_sleep_get_wakeup_cause()==ESP_SLEEP_WAKEUP_EXT0)
-	{
-		for(;;)
-		{
-
-		  if(gpio_get_level(HOME_KEY_IO)!=0)	
-			 HOME_KEY_FliterCnt++;
-		  else
-		  	{		 
-			 printf("Again sleep\n");
-			 vTaskDelay(300 / portTICK_PERIOD_MS);	 
-			 
-			 esp_deep_sleep_start(); 
-
-		  	}
-		  			
-		  if(HOME_KEY_FliterCnt>=10){HOME_KEY_FliterCnt=0; printf("Wake up from GPIO\n"); break;}
-
-		  vTaskDelay(300 / portTICK_PERIOD_MS);	  
-
-		}
-	   
-	}
-	
 
 	io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
-    io_conf.mode = GPIO_MODE_OUTPUT;
-    io_conf.pin_bit_mask = GPIO_OUTPUT_PIN_SEL;
-    io_conf.pull_down_en = 0;
-    io_conf.pull_up_en = 0;
-    gpio_config(&io_conf);
+	io_conf.mode = GPIO_MODE_OUTPUT;
+	io_conf.pin_bit_mask = GPIO_OUTPUT_PIN_SEL;
+	io_conf.pull_down_en = 0;
+	io_conf.pull_up_en = 0;
+	gpio_config(&io_conf);
 
-//	gpio_set_level(GPIO_OUTPUT_IO_0,0);
+	//	gpio_set_level(GPIO_OUTPUT_IO_0,0);
 
 
 	io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
-	io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;  
+	io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;	
 	io_conf.mode = GPIO_MODE_INPUT;
 	io_conf.pull_down_en= 1;
 	gpio_config(&io_conf);	
 
+}
 
+void BSP_TouchPad_Init(void)
+{
 
-	 // Initialize touch pad peripheral.
+	// Initialize touch pad peripheral.
     // The default fsm mode is software trigger mode.
     touch_pad_init();
 	touch_pad_set_voltage(TOUCH_HVOLT_2V7, TOUCH_LVOLT_0V5, TOUCH_HVOLT_ATTEN_1V);
@@ -102,7 +75,13 @@ void app_main()
 	
 	touch_pad_filter_start(TOUCHPAD_FILTER_TOUCH_PERIOD);
 
+
+}
 	
+
+void BSP_ADC_Init(void)
+{
+
 
 //	dac_output_enable(DAC_CHANNEL_1);
 //	dac_output_voltage( DAC_CHANNEL_1, 20);
@@ -114,32 +93,7 @@ void app_main()
     esp_adc_cal_characterize(unit, atten, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
  
 
-	Ble_spp_Server_Start();
-	
-	LED_Ctr_Init();
-
-	for(;;)
-	{
-	  LED_Ctr_Set();
-	  BatteyCheck();
-	  keyScanTask();
-	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
-
-
-	  
-	}
-
 }
-
-
-
-
-
-
-
-
-
-
 
  void KeyEventCallBack(UINT32 KeyVal)
 {
@@ -249,6 +203,64 @@ void BatteyCheck(void)
 
 
 
+void app_main()
+{
+
+
+	uint8_t HOME_KEY_FliterCnt=0;
+
+
+	esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
+
+	if (esp_sleep_get_wakeup_cause()==ESP_SLEEP_WAKEUP_EXT0)
+	{
+		for(;;)
+		{
+
+		  if(gpio_get_level(HOME_KEY_IO)!=0)	
+			 HOME_KEY_FliterCnt++;
+		  else
+		  	{		 
+			 printf("Again sleep\n");
+			 vTaskDelay(300 / portTICK_PERIOD_MS);	 
+			 
+			 esp_deep_sleep_start(); 
+
+		  	}
+		  			
+		  if(HOME_KEY_FliterCnt>=10){HOME_KEY_FliterCnt=0; printf("Wake up from GPIO\n"); break;}
+
+		  vTaskDelay(300 / portTICK_PERIOD_MS);	  
+
+		}
+	   
+	}
+	
+
+	BSP_Gpio_Init();
+
+	BSP_TouchPad_Init();
+
+	BSP_ADC_Init();
+	
+	LED_Ctr_Init();
+
+	Ble_spp_Server_Start();
+
+
+
+	for(;;)
+	{
+	  LED_Ctr_Set();
+	  BatteyCheck();
+	  keyScanTask();
+	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
+
+
+	  
+	}
+
+}
 
 
 

@@ -89,8 +89,8 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
 
 void LED_Ctr_Set(void)
 {
-static uint8_t i;
-uint8_t RowD=0x33;
+	static uint8_t i;
+	uint8_t RowD=0x33;
 
 	i++;
 	if(i%20==0)
