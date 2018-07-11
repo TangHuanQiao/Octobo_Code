@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "driver/i2c.h"
 
-#define I2C_EXAMPLE_MASTER_SCL_IO          19               /*!< gpio number for I2C master clock */
-#define I2C_EXAMPLE_MASTER_SDA_IO          18               /*!< gpio number for I2C master data  */
+#define I2C_EXAMPLE_MASTER_SCL_IO          26               /*!< gpio number for I2C master clock */
+#define I2C_EXAMPLE_MASTER_SDA_IO          25               /*!< gpio number for I2C master data  */
 #define I2C_EXAMPLE_MASTER_NUM             I2C_NUM_1        /*!< I2C port number for master dev */
 #define I2C_EXAMPLE_MASTER_TX_BUF_DISABLE  0                /*!< I2C master do not need buffer */
 #define I2C_EXAMPLE_MASTER_RX_BUF_DISABLE  0                /*!< I2C master do not need buffer */
@@ -83,7 +83,6 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
  void LED_Ctr_Init(void)
  {
 	i2c_demo_init();
-	//APDS_Init();
 
  }
  	
@@ -91,12 +90,12 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
 void LED_Ctr_Set(void)
 {
 static uint8_t i;
-uint16_t RowD=0;
+uint8_t RowD=0x33;
 
 	i++;
 	if(i%20==0)
 	{
-
+		i2c_demo_write(I2C_EXAMPLE_MASTER_NUM,&RowD,1);
 	}
 
 }

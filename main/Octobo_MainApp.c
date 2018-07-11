@@ -104,8 +104,8 @@ void app_main()
 
 	
 
-	dac_output_enable(DAC_CHANNEL_1);
-	dac_output_voltage( DAC_CHANNEL_1, 20);
+//	dac_output_enable(DAC_CHANNEL_1);
+//	dac_output_voltage( DAC_CHANNEL_1, 20);
 
 
 	adc1_config_width(ADC_WIDTH_BIT_12);
