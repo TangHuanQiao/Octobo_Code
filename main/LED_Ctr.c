@@ -8,7 +8,7 @@
 #define I2C_EXAMPLE_MASTER_RX_BUF_DISABLE  0                /*!< I2C master do not need buffer */
 #define I2C_EXAMPLE_MASTER_FREQ_HZ         100000           /*!< I2C master clock frequency */
 
-#define SLAVE_DEV_ADDR      	           0x39             /*!< ESP32 slave address, you can set any 7bit value */
+#define SLAVE_DEV_ADDR      	           0x5B             /*!< ESP32 slave address, you can set any 7bit value */
 #define WRITE_BIT                          I2C_MASTER_WRITE /*!< I2C master write */
 #define READ_BIT                           I2C_MASTER_READ  /*!< I2C master read */
 #define ACK_CHECK_EN                       0x1              /*!< I2C master will check ack from slave*/
@@ -16,6 +16,32 @@
 #define ACK_VAL                            0x0              /*!< I2C ack value */
 #define NACK_VAL                           0x1              /*!< I2C nack value */
 
+
+
+#define AW9623B_ID 0x23
+#define AW9623B_ID_REG 0x10
+
+#define GLOBAL_CONIFG_REG 0x11
+#define P0_LED_Mode_REG 0X12
+#define P1_LED_Mode_REG 0X13
+
+#define P0_0_DIM_REG 0X24
+#define P0_1_DIM_REG 0X25
+#define P0_2_DIM_REG 0X26
+#define P0_3_DIM_REG 0X27
+#define P0_4_DIM_REG 0X28
+#define P0_5_DIM_REG 0X29
+#define P0_6_DIM_REG 0X2A
+#define P0_7_DIM_REG 0X2B
+
+#define P1_0_DIM_REG 0X20
+#define P1_1_DIM_REG 0X21
+#define P1_2_DIM_REG 0X22
+#define P1_3_DIM_REG 0X23
+#define P1_4_DIM_REG 0X2C
+#define P1_5_DIM_REG 0X2D
+#define P1_6_DIM_REG 0X2E
+#define P1_7_DIM_REG 0X2F
 
 
 
@@ -44,11 +70,12 @@ static void i2c_demo_init()
 
 
 
-static esp_err_t i2c_demo_write(i2c_port_t i2c_num, uint8_t* data_wr, size_t size)
+static esp_err_t i2c_demo_write(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data_wr, size_t size)
 {
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
     i2c_master_write_byte(cmd, ( SLAVE_DEV_ADDR << 1 ) | WRITE_BIT, ACK_CHECK_EN);
+	i2c_master_write_byte(cmd, RegAddr, ACK_CHECK_EN);
     i2c_master_write(cmd, data_wr, size, ACK_CHECK_EN);
     i2c_master_stop(cmd);
     esp_err_t ret = i2c_master_cmd_begin(i2c_num, cmd, 1000 / portTICK_RATE_MS);
@@ -78,24 +105,52 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
     return ret;
 }
 
+ static esp_err_t AW9623B_i2c_write(uint8_t RegAddr,uint8_t Data)
+ {
+	 i2c_demo_write(I2C_NUM_1,RegAddr,&Data,1);
+	
+ }
 
+  static esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* Data)
+ {
+
+	 i2c_demo_read(I2C_NUM_1,RegAddr,&Data,1);
+ }
+
+
+
+
+
+  
 
  void LED_Ctr_Init(void)
  {
+ 	uint8_t TempID=0;
+	
 	i2c_demo_init();
 
+	AW9623B_i2c_read(AW9623B_ID_REG,&TempID);
+	
+	if(AW9623B_ID==TempID)
+	{
+		AW9623B_i2c_write(P0_LED_Mode_REG,0X00);
+		AW9623B_i2c_write(P1_LED_Mode_REG,0X00);
+
+
+	}
+		
  }
  	
 
 void LED_Ctr_Set(void)
 {
 	static uint8_t i;
-	uint8_t RowD=0x33;
+	uint8_t TempID;
 
 	i++;
 	if(i%20==0)
 	{
-		i2c_demo_write(I2C_EXAMPLE_MASTER_NUM,&RowD,1);
+		AW9623B_i2c_read(AW9623B_ID_REG,&TempID);
 	}
 
 }
