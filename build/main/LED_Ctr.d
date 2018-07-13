@@ -83,7 +83,8 @@ LED_Ctr.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -252,4 +253,6 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freert
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 /home/Administrator/esp/Octobo_Code/main/./LED_Ctr.c:

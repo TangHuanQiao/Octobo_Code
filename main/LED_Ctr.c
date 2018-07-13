@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "driver/i2c.h"
+#include "LED_Ctr.h"
+
 
 #define I2C_EXAMPLE_MASTER_SCL_IO          26               /*!< gpio number for I2C master clock */
 #define I2C_EXAMPLE_MASTER_SDA_IO          25               /*!< gpio number for I2C master data  */
@@ -17,6 +19,10 @@
 #define NACK_VAL                           0x1              /*!< I2C nack value */
 
 
+
+
+
+#define RGB_LED_MaxNUM 5
 
 #define AW9623B_ID 0x23
 #define AW9623B_ID_REG 0x10
@@ -45,6 +51,13 @@
 
 
 
+static const uint8_t Led_RGB_Tab[RGB_LED_MaxNUM][3]={
+												{P1_0_DIM_REG,P1_1_DIM_REG,P1_2_DIM_REG},
+												{P1_3_DIM_REG,P0_0_DIM_REG,P0_1_DIM_REG},
+												{P0_2_DIM_REG,P0_3_DIM_REG,P0_4_DIM_REG},
+												{P0_5_DIM_REG,P0_6_DIM_REG,P0_7_DIM_REG},
+												{P1_4_DIM_REG,P1_5_DIM_REG,P1_6_DIM_REG}
+										    };
 
 /**
  * @brief i2c master initialization
@@ -107,14 +120,14 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
 
  static esp_err_t AW9623B_i2c_write(uint8_t RegAddr,uint8_t Data)
  {
-	 i2c_demo_write(I2C_NUM_1,RegAddr,&Data,1);
+	 return i2c_demo_write(I2C_NUM_1,RegAddr,&Data,1);
 	
  }
 
-  static esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* Data)
+  static esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* pData)
  {
 
-	 i2c_demo_read(I2C_NUM_1,RegAddr,&Data,1);
+	 return i2c_demo_read(I2C_NUM_1,RegAddr,pData,1);
  }
 
 
@@ -142,17 +155,29 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
  }
  	
 
-void LED_Ctr_Set(void)
+void LED_Brightness_Set(uint8_t Led_Index,uint8_t Brightness)
 {
-	static uint8_t i;
-	uint8_t TempID;
 
-	i++;
-	if(i%20==0)
-	{
-		AW9623B_i2c_read(AW9623B_ID_REG,&TempID);
-	}
+		Led_Index=Led_RGB_Tab[Led_Index/3][Led_Index%3];
+			
+		AW9623B_i2c_write(Led_Index,Brightness);
+
 
 }
 
+
+
+void LED_Test_Dispaly(void)
+{
+    uint8_t TempIndex;
+
+
+	for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
+		{
+			LED_Brightness_Set(TempIndex,0xff);
+		    vTaskDelay(100/ portTICK_PERIOD_MS);		
+		}
+
+
+}
 
