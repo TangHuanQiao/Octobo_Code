@@ -36,8 +36,11 @@ static const uint16_t spp_service_uuid = 0xABF0;
 /// Characteristic UUID
 #define ESP_GATT_UUID_SPP_DATA_RECEIVE      0xABF1
 #define ESP_GATT_UUID_SPP_DATA_NOTIFY       0xABF2
+
+#ifdef SUPPORT_SPP_COMMAND_STATUS
 #define ESP_GATT_UUID_SPP_COMMAND_RECEIVE   0xABF3
 #define ESP_GATT_UUID_SPP_COMMAND_NOTIFY    0xABF4
+#endif
 
 #ifdef SUPPORT_HEARTBEAT
 #define ESP_GATT_UUID_SPP_HEARTBEAT         0xABF5
@@ -149,6 +152,7 @@ static const uint16_t spp_data_notify_uuid = ESP_GATT_UUID_SPP_DATA_NOTIFY;
 static const uint8_t  spp_data_notify_val[20] = {0x00};
 static const uint8_t  spp_data_notify_ccc[2] = {0x00, 0x00};
 
+#ifdef SUPPORT_SPP_COMMAND_STATUS
 ///SPP Service - command characteristic, read&write without response
 static const uint16_t spp_command_uuid = ESP_GATT_UUID_SPP_COMMAND_RECEIVE;
 static const uint8_t  spp_command_val[10] = {0x00};
@@ -157,6 +161,7 @@ static const uint8_t  spp_command_val[10] = {0x00};
 static const uint16_t spp_status_uuid = ESP_GATT_UUID_SPP_COMMAND_NOTIFY;
 static const uint8_t  spp_status_val[10] = {0x00};
 static const uint8_t  spp_status_ccc[2] = {0x00, 0x00};
+#endif
 
 #ifdef SUPPORT_HEARTBEAT
 ///SPP Server - Heart beat characteristic, notify&write&read
@@ -198,6 +203,7 @@ static const esp_gatts_attr_db_t spp_gatt_db[SPP_IDX_NB] =
     {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&character_client_config_uuid, ESP_GATT_PERM_READ|ESP_GATT_PERM_WRITE,
     sizeof(uint16_t),sizeof(spp_data_notify_ccc), (uint8_t *)spp_data_notify_ccc}},
 
+#ifdef SUPPORT_SPP_COMMAND_STATUS
     //SPP -  command characteristic Declaration
     [SPP_IDX_SPP_COMMAND_CHAR]            =
     {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&character_declaration_uuid, ESP_GATT_PERM_READ,
@@ -222,6 +228,7 @@ static const esp_gatts_attr_db_t spp_gatt_db[SPP_IDX_NB] =
     [SPP_IDX_SPP_STATUS_CFG]         =
     {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&character_client_config_uuid, ESP_GATT_PERM_READ|ESP_GATT_PERM_WRITE,
     sizeof(uint16_t),sizeof(spp_status_ccc), (uint8_t *)spp_status_ccc}},
+#endif
 
 #ifdef SUPPORT_HEARTBEAT
     //SPP -  Heart beat characteristic Declaration
@@ -455,8 +462,11 @@ static void spp_task_init(void)
     xTaskCreate(spp_heartbeat_task, "spp_heartbeat_task", 2048, NULL, 10, NULL);
 #endif
 
+#ifdef SUPPORT_SPP_COMMAND_STATUS
     cmd_cmd_queue = xQueueCreate(10, sizeof(uint32_t));
     xTaskCreate(spp_cmd_task, "spp_cmd_task", 2048, NULL, 10, NULL);
+#endif
+
 }
 
 static void gap_event_handler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *param)
@@ -497,16 +507,23 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
         	esp_ble_gatts_create_attr_tab(spp_gatt_db, gatts_if, SPP_IDX_NB, SPP_SVC_INST_ID);
        	break;
     	case ESP_GATTS_READ_EVT:
+#ifdef SUPPORT_SPP_COMMAND_STATUS
             res = find_char_and_desr_index(p_data->read.handle);
             if(res == SPP_IDX_SPP_STATUS_VAL){
                 //TODO:client read the status characteristic
             }
+#endif			
        	 break;
     	case ESP_GATTS_WRITE_EVT: {
     	    res = find_char_and_desr_index(p_data->write.handle);
             if(p_data->write.is_prep == false){
                 ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_WRITE_EVT : handle = %d\n", res);
-                if(res == SPP_IDX_SPP_COMMAND_VAL){
+
+				if(0)
+				{
+				}
+#ifdef SUPPORT_SPP_COMMAND_STATUS
+				else if(res == SPP_IDX_SPP_COMMAND_VAL){
                     uint8_t * spp_cmd_buff = NULL;
                     spp_cmd_buff = (uint8_t *)malloc((spp_mtu_size - 3) * sizeof(uint8_t));
                     if(spp_cmd_buff == NULL){
@@ -516,7 +533,9 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                     memset(spp_cmd_buff,0x0,(spp_mtu_size - 3));
                     memcpy(spp_cmd_buff,p_data->write.value,p_data->write.len);
                     xQueueSend(cmd_cmd_queue,&spp_cmd_buff,10/portTICK_PERIOD_MS);
-                }else if(res == SPP_IDX_SPP_DATA_NTF_CFG){
+                }
+#endif
+				else if(res == SPP_IDX_SPP_DATA_NTF_CFG){
                     if((p_data->write.len == 2)&&(p_data->write.value[0] == 0x01)&&(p_data->write.value[1] == 0x00)){
                         enable_data_ntf = true;
                     }else if((p_data->write.len == 2)&&(p_data->write.value[0] == 0x00)&&(p_data->write.value[1] == 0x00)){
