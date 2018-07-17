@@ -313,12 +313,11 @@ static void print_write_buffer(void)
         temp_spp_recv_data_node_p1 = temp_spp_recv_data_node_p1->next_node;
     }
 }
-
+	
 void uart_task(void *pvParameters)
 {
     uart_event_t event;
-    uint8_t total_num = 0;
-    uint8_t current_num = 0;
+
 
     for (;;) {
         //Waiting for UART event.
@@ -328,7 +327,7 @@ void uart_task(void *pvParameters)
             case UART_DATA:
                 if ((event.size)&&(is_connected)) {
                     uint8_t * temp = NULL;
-                    uint8_t * ntf_value_p = NULL;
+
 #ifdef SUPPORT_HEARTBEAT
                     if(!enable_heart_ntf){
                         ESP_LOGE(GATTS_TABLE_TAG, "%s do not enable heartbeat Notify\n", __func__);
@@ -346,43 +345,11 @@ void uart_task(void *pvParameters)
                     }
                     memset(temp,0x0,event.size);
                     uart_read_bytes(UART_NUM_0,temp,event.size,portMAX_DELAY);
-                    if(event.size <= (spp_mtu_size - 3)){
-                        esp_ble_gatts_send_indicate(spp_gatts_if, spp_conn_id, spp_handle_table[SPP_IDX_SPP_DATA_NTY_VAL],event.size, temp, false);
-                    }else if(event.size > (spp_mtu_size - 3)){
-                        if((event.size%(spp_mtu_size - 7)) == 0){
-                            total_num = event.size/(spp_mtu_size - 7);
-                        }else{
-                            total_num = event.size/(spp_mtu_size - 7) + 1;
-                        }
-                        current_num = 1;
-                        ntf_value_p = (uint8_t *)malloc((spp_mtu_size-3)*sizeof(uint8_t));
-                        if(ntf_value_p == NULL){
-                            ESP_LOGE(GATTS_TABLE_TAG, "%s malloc.2 failed\n", __func__);
-                            free(temp);
-                            break;
-                        }
-                        while(current_num <= total_num){
-                            if(current_num < total_num){
-                                ntf_value_p[0] = '#';
-                                ntf_value_p[1] = '#';
-                                ntf_value_p[2] = total_num;
-                                ntf_value_p[3] = current_num;
-                                memcpy(ntf_value_p + 4,temp + (current_num - 1)*(spp_mtu_size-7),(spp_mtu_size-7));
-                                esp_ble_gatts_send_indicate(spp_gatts_if, spp_conn_id, spp_handle_table[SPP_IDX_SPP_DATA_NTY_VAL],(spp_mtu_size-3), ntf_value_p, false);
-                            }else if(current_num == total_num){
-                                ntf_value_p[0] = '#';
-                                ntf_value_p[1] = '#';
-                                ntf_value_p[2] = total_num;
-                                ntf_value_p[3] = current_num;
-                                memcpy(ntf_value_p + 4,temp + (current_num - 1)*(spp_mtu_size-7),(event.size - (current_num - 1)*(spp_mtu_size - 7)));
-                                esp_ble_gatts_send_indicate(spp_gatts_if, spp_conn_id, spp_handle_table[SPP_IDX_SPP_DATA_NTY_VAL],(event.size - (current_num - 1)*(spp_mtu_size - 7) + 4), ntf_value_p, false);
-                            }
-                            vTaskDelay(20 / portTICK_PERIOD_MS);
-                            current_num++;
-                        }
-                        free(ntf_value_p);
-                    }
-                    free(temp);
+
+					ble_spp_server_send(temp,event.size);
+
+				free(temp);
+
                 }
                 break;
             default:
@@ -556,11 +523,17 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                 }
 #endif
                 else if(res == SPP_IDX_SPP_DATA_RECV_VAL){
-#ifdef SPP_DEBUG_MODE
-                    esp_log_buffer_char(GATTS_TABLE_TAG,(char *)(p_data->write.value),p_data->write.len);
-#else
-                    uart_write_bytes(UART_NUM_0, (char *)(p_data->write.value), p_data->write.len);
-#endif
+//#ifdef SPP_DEBUG_MODE
+//                    esp_log_buffer_char(GATTS_TABLE_TAG,(char *)(p_data->write.value),p_data->write.len);
+//#else
+//                    uart_write_bytes(UART_NUM_0, (char *)(p_data->write.value), p_data->write.len);
+//#endif
+
+				esp_log_buffer_char(GATTS_TABLE_TAG,(char *)(p_data->write.value),p_data->write.len);
+
+
+
+
                 }else{
                     //TODO:
                 }
@@ -667,7 +640,57 @@ static void gatts_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_
     } while (0);
 }
 
-void Ble_spp_Server_Start(void)
+
+void ble_spp_server_send(uint8_t* buf, uint32_t length)
+{
+    uint8_t total_num = 0;
+    uint8_t current_num = 0;
+	uint8_t * ntf_value_p = NULL;
+
+	
+	if(length <= (spp_mtu_size - 3)){
+		esp_ble_gatts_send_indicate(spp_gatts_if, spp_conn_id, spp_handle_table[SPP_IDX_SPP_DATA_NTY_VAL],length, buf, false);
+	}else if(length> (spp_mtu_size - 3)){
+		if((length%(spp_mtu_size - 7)) == 0){
+			total_num = length/(spp_mtu_size - 7);
+		}else{
+			total_num = length/(spp_mtu_size - 7) + 1;
+		}
+		current_num = 1;
+		ntf_value_p = (uint8_t *)malloc((spp_mtu_size-3)*sizeof(uint8_t));
+		if(ntf_value_p == NULL){
+			ESP_LOGE(GATTS_TABLE_TAG, "%s malloc.2 failed\n", __func__);
+			
+			return;
+		}
+		while(current_num <= total_num){
+			if(current_num < total_num){
+				ntf_value_p[0] = '#';
+				ntf_value_p[1] = '#';
+				ntf_value_p[2] = total_num;
+				ntf_value_p[3] = current_num;
+				memcpy(ntf_value_p + 4,buf + (current_num - 1)*(spp_mtu_size-7),(spp_mtu_size-7));
+				esp_ble_gatts_send_indicate(spp_gatts_if, spp_conn_id, spp_handle_table[SPP_IDX_SPP_DATA_NTY_VAL],(spp_mtu_size-3), ntf_value_p, false);
+			}else if(current_num == total_num){
+				ntf_value_p[0] = '#';
+				ntf_value_p[1] = '#';
+				ntf_value_p[2] = total_num;
+				ntf_value_p[3] = current_num;
+				memcpy(ntf_value_p + 4,buf + (current_num - 1)*(spp_mtu_size-7),(length - (current_num - 1)*(spp_mtu_size - 7)));
+				esp_ble_gatts_send_indicate(spp_gatts_if, spp_conn_id, spp_handle_table[SPP_IDX_SPP_DATA_NTY_VAL],(length - (current_num - 1)*(spp_mtu_size - 7) + 4), ntf_value_p, false);
+			}
+			vTaskDelay(20 / portTICK_PERIOD_MS);
+			current_num++;
+		}
+		free(ntf_value_p);
+	}
+
+
+
+}
+
+
+void ble_spp_server_start(void)
 {
     esp_err_t ret;
     esp_bt_controller_config_t bt_cfg = BT_CONTROLLER_INIT_CONFIG_DEFAULT();

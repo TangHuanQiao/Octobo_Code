@@ -245,7 +245,7 @@ void app_main()
 	
 	LED_Ctr_Init();
 
-	Ble_spp_Server_Start();
+	ble_spp_server_start();
 
 
 
