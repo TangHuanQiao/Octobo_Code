@@ -23,6 +23,9 @@
 #include "esp_bt_main.h"
 #include "ble_spp_server.h"
 
+#include "OctoboProtocol.h"
+
+
 #define GATTS_TABLE_TAG  "GATTS_SPP_DEMO"
 
 #define SPP_PROFILE_NUM             1
@@ -531,7 +534,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
 
 				esp_log_buffer_char(GATTS_TABLE_TAG,(char *)(p_data->write.value),p_data->write.len);
 
-
+				OctoboProtocolHandler((uint8_t*)(p_data->write.value),p_data->write.len);
 
 
                 }else{
