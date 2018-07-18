@@ -11,6 +11,7 @@
 #include "driver/gpio.h"
 #include "driver/dac.h"
 #include "LED_Ctr.h"
+#include "OctoboProtocol.h"
 
 
 
@@ -97,14 +98,26 @@ void BSP_ADC_Init(void)
 
  void KeyEventCallBack(UINT32 KeyVal)
 {
+   uint8_t tempData;
 	switch(KeyVal)
 		{
-			case KEY_VAL_POWER_PRESS:
+			case KEY_VAL_POWER_DOWN :
+				tempData=BUTTON_PRESS;
+				OctoboProtocolSendPack(O2P_KEY_CMD,&tempData,1);
+			break;
+
+			
+			case KEY_STATUS_PRESS_START:
+			case KEY_STATUS_PRESS:
 				esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
 				printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
 				vTaskDelay(100 / portTICK_PERIOD_MS);	  
-				esp_deep_sleep_start();
+
 			break;
+
+
+
+
 
 			case KEY_VAL_TOUCH1_DOWN:
 			case KEY_VAL_TOUCH2_DOWN:			

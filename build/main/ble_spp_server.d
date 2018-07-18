@@ -110,7 +110,8 @@ ble_spp_server.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_gatt_defs.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_bt_defs.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_bt_main.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -333,4 +334,6 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/blu
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_bt_main.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h:
 /home/Administrator/esp/Octobo_Code/main/./ble_spp_server.c:
