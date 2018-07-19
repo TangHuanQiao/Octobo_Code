@@ -54,7 +54,7 @@ void OctoboProtocolSendPack(uint8_t cmd,uint8_t *pData, uint8_t dataLen)
 	pPack[2]=dataLen;
 	pPack[3]=cmd;
 
-	memcpy(pData+4,pData,dataLen);
+	memcpy(pPack+4,pData,dataLen);
 
 	ble_spp_server_send(pPack,(dataLen+4));
 		
