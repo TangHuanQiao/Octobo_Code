@@ -174,7 +174,7 @@ void LED_Test_Dispaly(void)
 
 	for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
 		{
-			LED_Brightness_Set(TempIndex,0xff);
+			LED_Brightness_Set(TempIndex,LED_ON);
 		    vTaskDelay(100/ portTICK_PERIOD_MS);		
 		}
 

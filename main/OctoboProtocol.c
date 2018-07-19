@@ -45,20 +45,20 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 void OctoboProtocolSendPack(uint8_t cmd,uint8_t *pData, uint8_t dataLen)
 {
 
-	uint8_t* pPack=NULL;
+	uint8_t* Pack=NULL;
 
-	pPack = (uint8_t *)malloc(dataLen+4);
+	Pack = (uint8_t *)malloc(dataLen+4);
 
-	pPack[0]=START_FLAG;
-	pPack[1]=STRING_FORMAT;
-	pPack[2]=dataLen;
-	pPack[3]=cmd;
+	Pack[0]=START_FLAG;
+	Pack[1]=STRING_FORMAT;
+	Pack[2]=dataLen;
+	Pack[3]=cmd;
 
-	memcpy(pPack+4,pData,dataLen);
+	memcpy(Pack+4,pData,dataLen);
 
-	ble_spp_server_send(pPack,(dataLen+4));
+	ble_spp_server_send(Pack,(dataLen+4));
 		
-	free(pPack);
+	free(Pack);
 }
 
 

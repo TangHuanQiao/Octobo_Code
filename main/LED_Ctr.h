@@ -1,4 +1,7 @@
 
+#define LED_OFF 0
+#define LED_ON  0XFF
+
 
 
 void LED_Ctr_Init(void);
