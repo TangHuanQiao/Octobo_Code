@@ -132,7 +132,7 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_TOUCH7_DOWN:			
 			case KEY_VAL_TOUCH8_DOWN:
 				
-			printf("------TOUCH is Down-------\r\n");
+			printf("-----%d TOUCH is Down-------\r\n",(KeyVal&0xffff)/2);
 
 			break;
 
@@ -146,7 +146,7 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_TOUCH7_SHORT_UP:			
 			case KEY_VAL_TOUCH8_SHORT_UP:
 						
-			printf("--TOUCH is SHORT_UP--\r\n");
+			printf("----%d TOUCH is SHORT_UP--\r\n",(KeyVal&0xffff)/2);
 
 			break;
 
@@ -159,7 +159,7 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_TOUCH7_LONG_UP:			
 			case KEY_VAL_TOUCH8_LONG_UP:
 						
-			printf("--TOUCH is LONG_UP--\r\n");
+			printf("----%d TOUCH is LONG_UP--\r\n",(KeyVal&0xffff)/2);
 
 			break;			
 
@@ -183,13 +183,9 @@ void BSP_ADC_Init(void)
 
 			if(touch_filter_value<600)			
 				{
-				 printf("TOUCH%d:[%4d]\n", i+1, touch_filter_value);
 				 *pKeyVal|=Touch_KEY_VAL_Tab[i];
+				 printf("Touch_Ch %d:[%4d]\n",Touch_Ch_Tab[i], touch_filter_value);
 				}
-
-
-
-
 				
   		}
 			
