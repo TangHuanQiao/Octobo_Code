@@ -89,7 +89,8 @@ Octobo_MainApp.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/dac.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/dac_channel.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -270,4 +271,6 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/es
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h:
 /home/Administrator/esp/Octobo_Code/main/./Octobo_MainApp.c:

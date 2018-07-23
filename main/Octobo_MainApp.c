@@ -12,7 +12,7 @@
 #include "driver/dac.h"
 #include "LED_Ctr.h"
 #include "OctoboProtocol.h"
-
+#include "RFID.h"
 
 
 #define HOME_KEY_IO     34
@@ -258,13 +258,19 @@ void app_main()
 	
 	LED_Ctr_Init();
 
+	RFID_Init();
+
 	ble_spp_server_start();
+
+
 
 
 
 	for(;;)
 	{
-	
+	  const uint8_t data[2]={0x81,0x81};
+	  SPI_SendData(data,sizeof(data));
+	  
 	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);

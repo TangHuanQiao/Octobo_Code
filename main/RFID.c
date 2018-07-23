@@ -15,7 +15,7 @@ esp_err_t ret;
 spi_device_handle_t spi;
 
 
-void SPI_Config(void)
+static void SPI_Config(void)
 {
     spi_bus_config_t buscfg={
         .miso_io_num=PIN_NUM_MISO,
@@ -27,7 +27,7 @@ void SPI_Config(void)
     };
     spi_device_interface_config_t devcfg={
         .clock_speed_hz=100*1000,           
-        .mode=0,                                //SPI mode 0
+        .mode=2,                                //SPI mode 0
         .spics_io_num=PIN_NUM_CS,               //CS pin
         .queue_size=7,                          //We want to be able to queue 7 transactions at a time
         .pre_cb=NULL,  //Specify pre-transfer callback to handle D/C line
@@ -46,7 +46,7 @@ void SPI_Config(void)
 
 
 
-void SPI_SendData( uint8_t *data, int len)
+ void SPI_SendData( uint8_t *data, int len)
 {
     spi_transaction_t t;
 
@@ -61,7 +61,7 @@ void SPI_SendData( uint8_t *data, int len)
 
 
 
-void SPI_ReciveData(uint8_t *data, int len)
+static void SPI_ReciveData(uint8_t *data, int len)
 {
 	spi_transaction_t t;
 	
@@ -81,7 +81,13 @@ void SPI_ReciveData(uint8_t *data, int len)
 
 
 
+void RFID_Init(void)
+{
+	SPI_Config();
 
+
+
+}
 
 
 
