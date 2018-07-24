@@ -1,10 +1,13 @@
 #include "ble_spp_server.h"
 #include "OctoboProtocol.h"
+#include "Octobo_MainApp.h"
 
 
 
 void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 {
+		uint8_t TempData=0;
+
 		if(buf[0]==START_FLAG&&buf[1]==STRING_FORMAT)
 			{
 				switch(buf[3])
@@ -19,6 +22,8 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 
 
 						case P2O_VOLTAGE_CMD:
+							TempData=GetBaterryState();
+							OctoboProtocolSendPack(O2P_VOLTAGE_CMD,&TempData,1);
 						
 						break;
 

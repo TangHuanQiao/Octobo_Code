@@ -13,32 +13,21 @@
 #include "LED_Ctr.h"
 #include "OctoboProtocol.h"
 #include "RFID.h"
+#include "Octobo_MainApp.h"
 
-
-#define HOME_KEY_IO     34
-#define GPIO_INPUT_PIN_SEL  ((1ULL<<HOME_KEY_IO) | (1ULL<<HOME_KEY_IO))
-
-#define GPIO_OUTPUT_IO_0    18
-#define GPIO_OUTPUT_PIN_SEL  ((1ULL<<GPIO_OUTPUT_IO_0) | (1ULL<<GPIO_OUTPUT_IO_0))
-
-
-
-#define TOUCH_THRESH_NO_USE   (0)
-#define TOUCHPAD_FILTER_TOUCH_PERIOD (10)
 static const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
 static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
 							       KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
 
 
 
-#define DEFAULT_VREF    1100        //Use adc2_vref_to_gpio() to obtain a better estimate
-#define NO_OF_SAMPLES   64          //Multisampling
+
 static esp_adc_cal_characteristics_t *adc_chars;
 static const adc_channel_t channel = ADC_CHANNEL_7;     //GPIO34 if ADC1, GPIO14 if ADC2
 static const adc_atten_t atten = ADC_ATTEN_DB_0;
 static const adc_unit_t unit = ADC_UNIT_1;
 
-
+static uint8_t BaterryState=BAT_NORMAL;
 
 
 
@@ -196,7 +185,7 @@ void BSP_ADC_Init(void)
 
 
 
-void BatteyCheck(void)
+static void BatteyCheck(void)
 {
 	uint32_t adc_reading = 0;
 	 //Multisampling
@@ -209,11 +198,19 @@ void BatteyCheck(void)
 	 //Convert adc_reading to voltage in mV
 	 uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
 
-
-
+	 if(voltage>1)
+		BaterryState=BAT_NORMAL;
+	 else
+	 	BaterryState=BAT_LOW;
 
 }
 
+
+uint8_t GetBaterryState(void)
+{
+
+	return BaterryState;
+}
 
 
 void app_main()

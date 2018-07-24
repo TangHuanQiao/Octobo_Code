@@ -46,7 +46,7 @@ static void SPI_Config(void)
 
 
 
- void SPI_SendData( uint8_t *data, int len)
+ void SPI_SendData( const uint8_t *data, int len)
 {
     spi_transaction_t t;
 
