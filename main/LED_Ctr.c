@@ -22,7 +22,7 @@
 
 
 
-#define RGB_LED_MaxNUM 5
+
 
 #define AW9623B_ID 0x23
 #define AW9623B_ID_REG 0x10

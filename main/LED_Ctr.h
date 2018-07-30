@@ -2,6 +2,8 @@
 #define LED_OFF 0
 #define LED_ON  0XFF
 
+#define RGB_LED_MaxNUM 5
+
 
 
 void LED_Ctr_Init(void);
