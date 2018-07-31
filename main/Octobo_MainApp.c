@@ -14,7 +14,8 @@
 #include "OctoboProtocol.h"
 #include "RFID.h"
 #include "Octobo_MainApp.h"
-//#include "test.h"
+#include "sky1311_drv.h"
+
 
 static const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
 static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
@@ -260,13 +261,13 @@ void app_main()
 
 	ble_spp_server_start();
 
-//	TestFun();
+
 
 
 
 	for(;;)
 	{
-	  const uint8_t data[2]={0x81,0x81};
+	  uint8_t data[2]={0x81,0x81};
 	  SPI_SendData(data,sizeof(data));
 	  
 	  BatteyCheck();
