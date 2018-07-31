@@ -14,7 +14,7 @@
 #include "OctoboProtocol.h"
 #include "RFID.h"
 #include "Octobo_MainApp.h"
-#include "sky1311_drv.h"
+
 
 
 static const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
@@ -266,10 +266,7 @@ void app_main()
 
 
 	for(;;)
-	{
-	  uint8_t data[2]={0x81,0x81};
-	  SPI_SendData(data,sizeof(data));
-	  
+	{	  
 	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);

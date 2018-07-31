@@ -91,9 +91,7 @@ Octobo_MainApp.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/RFID.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -278,8 +276,4 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboPr
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/RFID.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h:
 /home/Administrator/esp/Octobo_Code/main/./Octobo_MainApp.c:
