@@ -38,12 +38,16 @@
 #ifndef TRUE
 	/** Value is true (boolean_t type) */
     #define TRUE        ((boolean) 1)
+#endif	
+#ifndef true	
     #define true        ((boolean) 1)
 #endif
 
 #ifndef FALSE
 	/** Value is false (boolean_t type) */
     #define FALSE       ((boolean) 0)
+#endif	
+#ifndef false	
 	#define false       ((boolean) 0)
 #endif
 

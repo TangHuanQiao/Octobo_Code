@@ -28,6 +28,26 @@ OctoboProtocol.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/gpio.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/assert.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_reg.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_assert.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_struct.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/rtc_io_reg.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/io_mux_reg.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_sig_map.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/gpio.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_attr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_pins.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_intr_alloc.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/gpio_periph.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h:
@@ -85,6 +105,46 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/gpio.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/assert.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_reg.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_assert.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_struct.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/rtc_io_reg.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/io_mux_reg.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_sig_map.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/gpio.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_attr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_pins.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_intr_alloc.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/gpio_periph.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 /home/Administrator/esp/Octobo_Code/main/./OctoboProtocol.c:

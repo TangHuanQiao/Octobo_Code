@@ -90,6 +90,34 @@ static  void SPI_ReciveData(uint8_t *data, int len)
 	 }
  }
 
+void uart_puts(char *str)
+{
+    while(*str) printf("%c",*str++);
+  
+}
+
+ void uart_newrow()
+ {
+	 printf("\r\n");
+ }
+
+ void uart_printBuffer(uint8_t* buff, uint16_t size)
+ {
+	 while(size--)
+	 {
+		 printf("%X",*buff++);
+	 }
+ }
+
+ void uart_putHex(uint8_t data)
+ {
+		printf("%X",data);
+ }
+
+ void uart_putChar(uint8_t ch)
+ {
+	    printf("%c",ch);
+ }	
 
  /******************************************************************************
  ** \简  述  通过SPI接口向1311写一个字节的命令
