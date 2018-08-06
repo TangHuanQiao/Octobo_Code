@@ -26,7 +26,7 @@ void RFID_Init(void)
 {
 	SPI_Config();
 
-	xTaskCreate(RFID_Task, "RFID_Task", 1024, (void* ) 0, 10, NULL);
+	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 10, NULL);
 
 
 }

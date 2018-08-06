@@ -13,7 +13,7 @@ enum LED_CtrMode
 	OUTWARD_MOD,
 	INWARD_MOD,	
 	
-}
+};
 
 
 void LED_Ctr_Init(void);
