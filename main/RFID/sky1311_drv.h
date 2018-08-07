@@ -30,7 +30,6 @@ void sky1311ReadFifo(uint8_t *data, uint8_t count);
 //void SKY1311_SYSCLK(void);
 
 void SPI_Config(void);
-void SPI_SendData( uint8_t *data, int len);
 void DelayMS(uint32_t x);
 void delay(volatile uint8_t i);
 void uart_puts(char *str);

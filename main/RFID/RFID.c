@@ -39,14 +39,18 @@ void RFID_Task(void* arg)
 
 
 
-//	while(1)
-//		{
-//			uint8_t textData=0;	
-//			SKY1311_ENABLE();
-//			textData=sky1311ReadReg(ADDR_ANA_CFG4);
-//			printf("...textData=%d...\r\n",textData);
-//			vTaskDelay(100 / portTICK_PERIOD_MS);	
-//		}
+	while(0)
+		{
+			uint8_t textData=0x3;	
+			SKY1311_ENABLE();
+//			sky1311WriteCmd(1);
+//			sky1311WriteReg(ADDR_ANA_CFG4,1);
+//			sky1311WriteFifo(&textData,1);
+//			sky1311ReadFifo(&textData,1);
+			textData=sky1311ReadReg(ADDR_ANA_CFG4);
+			printf("...textData=%d...\r\n",textData);
+			vTaskDelay(100 / portTICK_PERIOD_MS);	
+		}
 
 
 #if 0
