@@ -33,11 +33,20 @@ void RFID_Init(void)
 
 
 
+
 void RFID_Task(void* arg)
 {
-//	uint8_t data[2]={0x81,0x81};
-//	SPI_SendData(data,sizeof(data));
-//	vTaskDelay(100 / portTICK_PERIOD_MS);	
+
+
+
+//	while(1)
+//		{
+//			uint8_t textData=0;	
+//			SKY1311_ENABLE();
+//			textData=sky1311ReadReg(ADDR_ANA_CFG4);
+//			printf("...textData=%d...\r\n",textData);
+//			vTaskDelay(100 / portTICK_PERIOD_MS);	
+//		}
 
 
 #if 0
@@ -46,15 +55,17 @@ void RFID_Task(void* arg)
 
 	while(1)
 	{
+		DelayMS(200);
 	    if(Ok != TypeA_test())              // read Type A card
 	    {
+			DelayMS(100);
 	        if(Ok!= SmartTypeB_test())      // read Type B card
 	        {
 
 	        }
 	    }
 	    sky1311Reset();
-	    DelayMS(400);
+
 	}
 #else
 	/* RC 频率校准，获得最接近13.56M的RC值以及对应的AD值
@@ -70,7 +81,7 @@ void RFID_Task(void* arg)
 #endif
 	while(1)
 	{
-		vTaskDelay(5 / portTICK_PERIOD_MS);
+		vTaskDelay(50 / portTICK_PERIOD_MS);
 
 
 
@@ -78,6 +89,10 @@ void RFID_Task(void* arg)
 	    {
 	        irqClearAll();              // 清除SKY1311的所有中断
 	        checkCardInit(rcValue);     // 配置进入自动检卡状态
+
+			while(SKY1311_IRQ_READ()==0)
+				vTaskDelay(50 / portTICK_PERIOD_MS);
+				
 
 	        /* 以下是MCU 休眠后唤醒 */
 	        if(SKY1311_IRQ_READ())       // 检卡中断产生，设置了标记
