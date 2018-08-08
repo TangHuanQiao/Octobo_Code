@@ -46,8 +46,8 @@ void BSP_Gpio_Init(void)
 
 	//	gpio_set_level(GPIO_OUTPUT_IO_0,0);
 
-
-	io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
+    //interrupt of rising edge
+    io_conf.intr_type = GPIO_PIN_INTR_POSEDGE;
 	io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;	
 	io_conf.mode = GPIO_MODE_INPUT;
 	io_conf.pull_down_en= 1;

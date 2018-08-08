@@ -1,5 +1,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/queue.h"
 #include "sky1311_drv.h"
 #include "mcu.h"
 #include "sky1311t.h"
@@ -21,12 +22,36 @@ static void RFID_Task(void* arg);
 
 
 
+static xQueueHandle gpio_evt_queue = NULL;
+
+static void IRAM_ATTR gpio_isr_handler(void* arg)
+{
+    uint32_t gpio_num = (uint32_t) arg;
+	if(gpio_num==RFID_INT_IO)
+    xQueueSendFromISR(gpio_evt_queue, &gpio_num, NULL);
+
+
+}
+
+
+
+
 
 void RFID_Init(void)
 {
 	SPI_Config();
 
-	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 10, NULL);
+	
+
+	//install gpio isr service
+	gpio_install_isr_service(0);
+	//hook isr handler for specific gpio pin
+	gpio_isr_handler_add(RFID_INT_IO, gpio_isr_handler, (void*) RFID_INT_IO);
+
+		//create a queue to handle gpio event from isr
+	gpio_evt_queue = xQueueCreate(5, sizeof(uint32_t));
+
+	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 13, NULL);
 
 
 }
@@ -37,23 +62,26 @@ void RFID_Init(void)
 void RFID_Task(void* arg)
 {
 
+	uint32_t io_num;
 
+ 	DelayMS(1000);
+	printf("Enter RFID Task...\r\n");
 
-	while(0)
-		{
-			uint8_t textData=0x3;	
-			SKY1311_ENABLE();
+//	while(0)
+//		{
+//			uint8_t textData=0x3;	
+//			SKY1311_ENABLE();
 //			sky1311WriteCmd(1);
 //			sky1311WriteReg(ADDR_ANA_CFG4,1);
 //			sky1311WriteFifo(&textData,1);
 //			sky1311ReadFifo(&textData,1);
-			textData=sky1311ReadReg(ADDR_ANA_CFG4);
-			printf("...textData=%d...\r\n",textData);
-			vTaskDelay(100 / portTICK_PERIOD_MS);	
-		}
+//			textData=sky1311ReadReg(ADDR_ANA_CFG4);
+//			printf("...textData=%d...\r\n",textData);
+//			vTaskDelay(100 / portTICK_PERIOD_MS);	
+//		}
 
 
-#if 0
+#if 1
 
 	//sky1311WriteReg(ADDR_MFOUT_SEL, 0x33);      // MFOUT SEL
 
@@ -94,9 +122,14 @@ void RFID_Task(void* arg)
 	        irqClearAll();              // 清除SKY1311的所有中断
 	        checkCardInit(rcValue);     // 配置进入自动检卡状态
 
-			while(SKY1311_IRQ_READ()==0)
-				vTaskDelay(50 / portTICK_PERIOD_MS);
+//			while(1)
+			 { 
+				xQueueReceive(gpio_evt_queue, &io_num, portMAX_DELAY);
 				
+				 printf("io_num====%d\r\n",io_num);
+				 vTaskDelay(100 / portTICK_PERIOD_MS);
+			 } 
+
 
 	        /* 以下是MCU 休眠后唤醒 */
 	        if(SKY1311_IRQ_READ())       // 检卡中断产生，设置了标记

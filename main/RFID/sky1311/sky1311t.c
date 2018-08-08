@@ -76,7 +76,7 @@ static void analogInit(void)
                                              // 3-2: PA Driver
                                              //   1: ixtal
                                              //   0: External LDO
-    sky1311WriteReg(ADDR_ANA_CFG1, 0xFC);    //   7: txen
+    sky1311WriteReg(ADDR_ANA_CFG1, 0xEC);    //   7: txen
                                              //   6: rxen
                                              // 5-4: 00(osc off, xtal off) 01(osc on, xtal off) 10(osc off, xtal 13.56) 11(osc off, xtal 27.12)
     sky1311WriteReg(ADDR_ANA_CFG2, ANA2_A);

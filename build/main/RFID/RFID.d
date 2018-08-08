@@ -79,6 +79,7 @@ RFID/RFID.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/task.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Sky1311/sky1311t.h \
@@ -248,6 +249,8 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freert
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h:
 
