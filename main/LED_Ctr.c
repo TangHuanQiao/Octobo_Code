@@ -124,7 +124,7 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
 	
  }
 
-  static esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* pData)
+   esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* pData)
  {
 
 	 return i2c_demo_read(I2C_NUM_1,RegAddr,pData,1);

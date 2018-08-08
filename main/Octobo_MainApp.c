@@ -266,12 +266,13 @@ void app_main()
 
 
 	for(;;)
-	{	  
+	{
+	  uint8_t ID=0;
+	  AW9623B_i2c_read(0x10,&ID);
+	  printf("ID----%x\r\n",ID);
 	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
-
-
 	  
 	}
 
