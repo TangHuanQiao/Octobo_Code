@@ -1,19 +1,26 @@
 
+
+#define LED_RESET_IO       4
+#define LED_RESET_HIGH	gpio_set_level(LED_RESET_IO,1)
+#define LED_RESET_LOW	gpio_set_level(LED_RESET_IO,0)
+
+
+
 #define LED_OFF 0
 #define LED_ON  0XFF
 
 #define RGB_LED_MaxNUM 5
 
-enum LED_CtrMode
-{
-	ON_OFF_MOD=1,
-	RL_ROLLING_MOD,
-	LR_ROLLING_MOD,
-	COLOR_ROLLING_MOD,
-	OUTWARD_MOD,
-	INWARD_MOD,	
-	
-};
+//enum LED_CtrMode
+//{
+//	ON_OFF_MOD=1,
+//	RL_ROLLING_MOD,
+//	LR_ROLLING_MOD,
+//	COLOR_ROLLING_MOD,
+//	OUTWARD_MOD,
+//	INWARD_MOD,	
+//	
+//};
 
 
 void LED_Ctr_Init(void);

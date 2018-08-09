@@ -16,13 +16,14 @@ boolean hasCardIn=false;
 #define  WAITREMOVE         4
 uint8_t  cardStatus = CARDREMOVED;
 
+static xQueueHandle gpio_evt_queue = NULL;
+
+
 
 static void RFID_Task(void* arg);
 
 
 
-
-static xQueueHandle gpio_evt_queue = NULL;
 
 static void IRAM_ATTR gpio_isr_handler(void* arg)
 {
@@ -51,7 +52,7 @@ void RFID_Init(void)
 		//create a queue to handle gpio event from isr
 	gpio_evt_queue = xQueueCreate(5, sizeof(uint32_t));
 
-	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 13, NULL);
+	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 1, NULL);
 
 
 }
@@ -64,7 +65,7 @@ void RFID_Task(void* arg)
 
 	uint32_t io_num;
 
- 	DelayMS(1000);
+ 	DelayMS(500);
 	printf("Enter RFID Task...\r\n");
 
 //	while(0)

@@ -1,11 +1,12 @@
 
 #include "sky1311_drv.h"
+#include "LED_Ctr.h"
 
 #define HOME_KEY_IO     34
 #define GPIO_INPUT_PIN_SEL  ((1ULL<<HOME_KEY_IO) | (1ULL<<RFID_INT_IO))
 
 
-#define GPIO_OUTPUT_PIN_SEL  ((1ULL<<RFID_POWER_IO) | (1ULL<<RFID_POWER_IO))
+#define GPIO_OUTPUT_PIN_SEL  ((1ULL<<LED_RESET_IO) | (1ULL<<RFID_POWER_IO))
 
 #define TOUCH_THRESH_NO_USE   (0)
 #define TOUCHPAD_FILTER_TOUCH_PERIOD (10)

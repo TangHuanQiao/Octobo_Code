@@ -10,7 +10,6 @@
 #include "esp_adc_cal.h"
 #include "driver/gpio.h"
 #include "driver/dac.h"
-#include "LED_Ctr.h"
 #include "OctoboProtocol.h"
 #include "RFID.h"
 #include "Octobo_MainApp.h"
@@ -89,20 +88,35 @@ void BSP_ADC_Init(void)
 
  void KeyEventCallBack(UINT32 KeyVal)
 {
-   uint8_t tempData;
+   uint8_t tempDataBuf[2];
+   uint32_t TOUCH_Num;
+
+  	
+   TOUCH_Num=KeyVal&0xffff;
+    for(int i=1;TOUCH_Num>0;i++)
+   	{
+		TOUCH_Num=TOUCH_Num>>1;
+		if(TOUCH_Num==1)
+			{
+				TOUCH_Num=i;
+				break;
+			}
+   	}
+ 
+   
 	switch(KeyVal)
 		{
 			case KEY_VAL_POWER_DOWN :
-				tempData=BUTTON_PRESS;
-				OctoboProtocolSendPack(O2P_KEY_CMD,&tempData,1);
+				tempDataBuf[0]=BUTTON_PRESS;
+				OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,1);
 			break;
 
 			
 			case KEY_VAL_POWER_PRESS_START:
 			case KEY_VAL_POWER_PRESS:
 				
-				tempData=BUTTON_LONG_PRESS;
-				OctoboProtocolSendPack(O2P_KEY_CMD,&tempData,1);			
+				tempDataBuf[0]=BUTTON_LONG_PRESS;
+				OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,1);			
 				esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
 				printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
 				vTaskDelay(100 / portTICK_PERIOD_MS);	  
@@ -122,8 +136,11 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_TOUCH6_DOWN:
 			case KEY_VAL_TOUCH7_DOWN:			
 			case KEY_VAL_TOUCH8_DOWN:
-				
-			printf("-----%d TOUCH is Down-------\r\n",(KeyVal&0xffff)/2);
+
+			tempDataBuf[0]=TOUCH_Num;
+			tempDataBuf[1]=TOUCH_PRESS;
+			OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);					
+			printf("-----%d TOUCH is Down-------\r\n",TOUCH_Num);
 
 			break;
 
@@ -136,8 +153,12 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_TOUCH6_SHORT_UP:
 			case KEY_VAL_TOUCH7_SHORT_UP:			
 			case KEY_VAL_TOUCH8_SHORT_UP:
-						
-			printf("----%d TOUCH is SHORT_UP--\r\n",(KeyVal&0xffff)/2);
+
+			
+			tempDataBuf[0]=TOUCH_Num;
+			tempDataBuf[1]=TOUCH_RELEASE;
+			OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);				
+			printf("----%d TOUCH is SHORT_UP--\r\n",TOUCH_Num);
 
 			break;
 
@@ -149,8 +170,11 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_TOUCH6_LONG_UP:
 			case KEY_VAL_TOUCH7_LONG_UP:			
 			case KEY_VAL_TOUCH8_LONG_UP:
-						
-			printf("----%d TOUCH is LONG_UP--\r\n",(KeyVal&0xffff)/2);
+					
+			tempDataBuf[0]=TOUCH_Num;
+			tempDataBuf[1]=TOUCH_RELEASE;
+			OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);
+			printf("----%d TOUCH is LONG_UP--\r\n",TOUCH_Num);
 
 			break;			
 
@@ -263,13 +287,12 @@ void app_main()
 
 
 
+	LED_Test_Dispaly();
 
 
 	for(;;)
 	{
-	  uint8_t ID=0;
-	  AW9623B_i2c_read(0x10,&ID);
-	  printf("ID----%x\r\n",ID);
+	  
 	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);

@@ -52,11 +52,12 @@
 
 
 static const uint8_t Led_RGB_Tab[RGB_LED_MaxNUM][3]={
-												{P1_0_DIM_REG,P1_1_DIM_REG,P1_2_DIM_REG},
 												{P1_3_DIM_REG,P0_0_DIM_REG,P0_1_DIM_REG},
-												{P0_2_DIM_REG,P0_3_DIM_REG,P0_4_DIM_REG},
+												{P1_0_DIM_REG,P1_1_DIM_REG,P1_2_DIM_REG},
+												{P1_4_DIM_REG,P1_5_DIM_REG,P1_6_DIM_REG},
 												{P0_5_DIM_REG,P0_6_DIM_REG,P0_7_DIM_REG},
-												{P1_4_DIM_REG,P1_5_DIM_REG,P1_6_DIM_REG}
+												{P0_2_DIM_REG,P0_3_DIM_REG,P0_4_DIM_REG},												
+												
 										    };
 
 /**
@@ -83,30 +84,13 @@ static void i2c_demo_init()
 
 
 
-static esp_err_t i2c_demo_write(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data_wr, size_t size)
-{
-    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
-    i2c_master_start(cmd);
-    i2c_master_write_byte(cmd, ( SLAVE_DEV_ADDR << 1 ) | WRITE_BIT, ACK_CHECK_EN);
-	i2c_master_write_byte(cmd, RegAddr, ACK_CHECK_EN);
-    i2c_master_write(cmd, data_wr, size, ACK_CHECK_EN);
-    i2c_master_stop(cmd);
-    esp_err_t ret = i2c_master_cmd_begin(i2c_num, cmd, 1000 / portTICK_RATE_MS);
-    i2c_cmd_link_delete(cmd);
-    return ret;
-}
-
-
-
-static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data_rd, size_t size)
+static esp_err_t i2c_demo_read(i2c_port_t i2c_num, uint8_t* data_rd, size_t size)
 {
     if (size == 0) {
         return ESP_OK;
     }
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
-	i2c_master_write_byte(cmd, ( SLAVE_DEV_ADDR << 1 ) | WRITE_BIT, ACK_CHECK_EN);
-    i2c_master_write_byte(cmd, RegAddr, ACK_CHECK_EN);
     i2c_master_write_byte(cmd, ( SLAVE_DEV_ADDR << 1 ) | READ_BIT, ACK_CHECK_EN);
     if (size > 1) {
         i2c_master_read(cmd, data_rd, size - 1, ACK_VAL);
@@ -116,18 +100,39 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
     esp_err_t ret = i2c_master_cmd_begin(i2c_num, cmd, 1000 / portTICK_RATE_MS);
     i2c_cmd_link_delete(cmd);
     return ret;
+
+}
+
+
+
+static esp_err_t i2c_demo_write(i2c_port_t i2c_num, uint8_t* data_wr, size_t size)
+{
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, ( SLAVE_DEV_ADDR << 1 ) | WRITE_BIT, ACK_CHECK_EN);
+    i2c_master_write(cmd, data_wr, size, ACK_CHECK_EN);
+    i2c_master_stop(cmd);
+    esp_err_t ret = i2c_master_cmd_begin(i2c_num, cmd, 1000 / portTICK_RATE_MS);
+    i2c_cmd_link_delete(cmd);
+    return ret;
+
+
 }
 
  static esp_err_t AW9623B_i2c_write(uint8_t RegAddr,uint8_t Data)
  {
-	 return i2c_demo_write(I2C_NUM_1,RegAddr,&Data,1);
+ 	uint8_t TempData[2]={0};
+	TempData[0]=RegAddr;
+	TempData[1]=Data;	
+	 return i2c_demo_write(I2C_NUM_1,TempData,sizeof(TempData));
 	
  }
 
    esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* pData)
  {
+ 	 i2c_demo_write(I2C_NUM_1,&RegAddr,1);
 
-	 return i2c_demo_read(I2C_NUM_1,RegAddr,pData,1);
+	 return i2c_demo_read(I2C_NUM_1,pData,1);
  }
 
 
@@ -139,6 +144,8 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
  void LED_Ctr_Init(void)
  {
  	uint8_t TempID=0;
+
+	LED_RESET_HIGH;
 	
 	i2c_demo_init();
 
@@ -146,9 +153,12 @@ static esp_err_t i2c_demo_read(i2c_port_t i2c_num,uint8_t RegAddr, uint8_t* data
 	
 	if(AW9623B_ID==TempID)
 	{
+		AW9623B_i2c_write(GLOBAL_CONIFG_REG,0x03);
 		AW9623B_i2c_write(P0_LED_Mode_REG,0X00);
 		AW9623B_i2c_write(P1_LED_Mode_REG,0X00);
 
+
+		printf("Enter LED_Ctr_Init...\r\n");
 
 	}
 		
@@ -174,8 +184,8 @@ void LED_Test_Dispaly(void)
 
 	for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
 		{
-			LED_Brightness_Set(TempIndex,LED_ON);
-		    vTaskDelay(100/ portTICK_PERIOD_MS);		
+			LED_Brightness_Set(TempIndex,5);
+		    vTaskDelay(500/ portTICK_PERIOD_MS);		
 		}
 
 
