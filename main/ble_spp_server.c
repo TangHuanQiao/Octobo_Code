@@ -31,7 +31,7 @@
 #define SPP_PROFILE_NUM             1
 #define SPP_PROFILE_APP_IDX         0
 #define ESP_SPP_APP_ID              0x56
-#define SAMPLE_DEVICE_NAME          "Octobo_SPP_SERVER"
+#define SAMPLE_DEVICE_NAME          "Octobo"
 #define SPP_SVC_INST_ID	            0
 
 /// SPP Service

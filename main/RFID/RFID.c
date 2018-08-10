@@ -84,7 +84,7 @@ void RFID_Task(void* arg)
 
 #if 1
 
-	//sky1311WriteReg(ADDR_MFOUT_SEL, 0x33);      // MFOUT SEL
+	sky1311WriteReg(ADDR_MFOUT_SEL, 0x33);      // MFOUT SEL
 
 	while(1)
 	{

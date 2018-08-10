@@ -57,9 +57,13 @@
 	 vTaskDelay(x/ portTICK_PERIOD_MS);
  }
 
- void delay(volatile uint8_t i)
+ void delay(volatile uint16_t i)
  {
-	 DelayMS(1);
+ 	 i=i*10;
+	 while(i--)
+	 	{
+
+	 	}
 
  }
 
