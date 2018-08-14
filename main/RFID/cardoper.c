@@ -538,9 +538,9 @@ sta_result_t mifare1_WriteTest(uint8_t *UID)
 ****************************************************************/
 sta_result_t smartTypeA_test(void)
 {
-    sta_result_t sta;
+    sta_result_t sta=Error;
     uint8_t tmpBuf[100];
-    uint16_t tmpSize;
+    uint16_t tmpSize=0;
 	//uint8_t i;
 //    uint32_t DecNum=0;
 //    uint8_t DecLength=0;
@@ -606,9 +606,12 @@ sta_result_t smartTypeA_test(void)
     }
     else{
 #if DEBUG==1
-        uart_puts("Select MF:");
-    	uart_printBuffer(tmpBuf,tmpSize-2);
-        uart_newrow();
+		if(tmpSize<sizeof(tmpBuf))
+			{
+		        uart_puts("Select MF:");
+		    	uart_printBuffer(tmpBuf,tmpSize-2);
+		        uart_newrow();
+			}	
 #endif
     }
 #if 0
