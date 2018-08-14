@@ -319,7 +319,7 @@ void sky1311_fifo_tx(uint8_t txType, uint8_t *txBuff, uint16_t txSize)
     }
     /* wait TX finished */
     while(1){
-        delayCount = 0x4FFF;
+        delayCount = 0xFF;
         while((0==(irq_sta=sky1311ReadReg(ADDR_IRQ_STA))) && --delayCount);   // waiting for TX STOP IRQ
         if((delayCount==0)||(irq_sta & IRQ_TOUT)){             // tiemout
             sky1311WriteCmd(CMD_IDLE);
@@ -357,7 +357,7 @@ sta_result_t sky1311_fifo_rx(uint8_t rxType, uint8_t rateType, uint8_t *rxBuff, 
     volatile uint16_t delayCount;
 
     while(1){
-        delayCount=0x4FFF;                        // delay
+        delayCount=0xFF;                        // delay
         while((0==(irq_sta=sky1311ReadReg(ADDR_IRQ_STA))) && --delayCount);
 
         irq_sta = sky1311ReadReg(ADDR_IRQ_STA);
@@ -473,7 +473,7 @@ sta_result_t bitCollisionTrans(uint8_t* txBuf, uint8_t txLen, uint8_t lastBitNum
     sky1311WriteCmd(CMD_TX_RX);             // transceive & into receive mode
     /* wait TX finished */
     while(1){
-        delayCount = 0x4FFF;                // timeout count
+        delayCount = 0xFF;                // timeout count
         while((0==(irq_sta=sky1311ReadReg(ADDR_IRQ_STA))) && --delayCount);   // waiting for TX STOP IRQ
         irq_sta = sky1311ReadReg(ADDR_IRQ_STA);
         if((delayCount==0)||(irq_sta & IRQ_TOUT)){
@@ -490,7 +490,7 @@ sta_result_t bitCollisionTrans(uint8_t* txBuf, uint8_t txLen, uint8_t lastBitNum
         }
     }
     /* 等待接收数据完成 */
-    delayCount = 0x4FFF;                            // timeout count
+    delayCount = 0xFF;                            // timeout count
     while((0==(irq_sta=sky1311ReadReg(ADDR_IRQ_STA))) && --delayCount);     // waiting for RX STOP IRQ
 
     irq_sta = sky1311ReadReg(ADDR_IRQ_STA);

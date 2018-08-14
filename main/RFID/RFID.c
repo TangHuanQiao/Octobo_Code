@@ -50,9 +50,9 @@ void RFID_Init(void)
 	gpio_isr_handler_add(RFID_INT_IO, gpio_isr_handler, (void*) RFID_INT_IO);
 
 		//create a queue to handle gpio event from isr
-	gpio_evt_queue = xQueueCreate(5, sizeof(uint32_t));
+	gpio_evt_queue = xQueueCreate(1, sizeof(uint32_t));
 
-	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 1, NULL);
+	xTaskCreate(RFID_Task, "RFID_Task", 1024*5, (void* ) 0, 1, NULL);
 
 
 }
@@ -84,7 +84,7 @@ void RFID_Task(void* arg)
 
 #if 1
 
-	sky1311WriteReg(ADDR_MFOUT_SEL, 0x33);      // MFOUT SEL
+//	sky1311WriteReg(ADDR_MFOUT_SEL, 0x33);      // MFOUT SEL
 
 	while(1)
 	{

@@ -112,7 +112,7 @@ sta_result_t M1_Authentication_Auto(uint8_t auth_mode,uint8_t *m1Key,uint8_t *ui
     sky1311WriteCmd(CMD_AUTO_M1);
 
     // wait PICC return result
-    delayCount = 0x7FFF;
+    delayCount = 0xFF;
     while((0==(irq_sta=sky1311ReadReg(ADDR_IRQ_STA))) && --delayCount);
     irq_sta = sky1311ReadReg(ADDR_IRQ_STA);
     if(irq_sta & IRQ_M1)
@@ -193,7 +193,7 @@ sta_result_t M1_Authentication(uint8_t auth_mode,uint8_t *m1Key,uint8_t *uid, ui
     tmpBuf[2] = (uint8_t)(RA >> 8);
     tmpBuf[3] = (uint8_t)(RA >> 0);
 
-    delayCount = 0x7FFF;
+    delayCount = 0xFF;
     while(((sky1311ReadReg(ADDR_M1_SUC_STATE)&0x01)==0) && delayCount--);    // waiting for SUC64 ready
 
     tmpBuf[4] = sky1311ReadReg(ADDR_M1_SUC64_3);

@@ -29,7 +29,7 @@
 	 };
 	 spi_device_interface_config_t devcfg={
 	 	 .address_bits=8,
-		 .clock_speed_hz=1000*1000,			 
+		 .clock_speed_hz=5000*1000,			 
 		 .mode=0,								 //SPI mode 0
 		 .spics_io_num=PIN_NUM_CS,				 //CS pin
 		 .queue_size=7, 						 //We want to be able to queue 7 transactions at a time
@@ -59,7 +59,6 @@
 
  void delay(volatile uint16_t i)
  {
- 	 i=i*10;
 	 while(i--)
 	 	{
 
