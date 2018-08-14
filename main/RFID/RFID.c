@@ -52,7 +52,7 @@ void RFID_Init(void)
 		//create a queue to handle gpio event from isr
 	gpio_evt_queue = xQueueCreate(1, sizeof(uint32_t));
 
-	xTaskCreate(RFID_Task, "RFID_Task", 1024*5, (void* ) 0, 1, NULL);
+	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 1, NULL);
 
 
 }
@@ -68,18 +68,6 @@ void RFID_Task(void* arg)
  	DelayMS(500);
 	printf("Enter RFID Task...\r\n");
 
-//	while(0)
-//		{
-//			uint8_t textData=0x3;	
-//			SKY1311_ENABLE();
-//			sky1311WriteCmd(1);
-//			sky1311WriteReg(ADDR_ANA_CFG4,1);
-//			sky1311WriteFifo(&textData,1);
-//			sky1311ReadFifo(&textData,1);
-//			textData=sky1311ReadReg(ADDR_ANA_CFG4);
-//			printf("...textData=%d...\r\n",textData);
-//			vTaskDelay(100 / portTICK_PERIOD_MS);	
-//		}
 
 
 #if 1

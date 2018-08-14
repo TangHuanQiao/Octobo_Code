@@ -177,6 +177,8 @@ void sky1311WriteFifo(uint8_t *data, uint8_t count)
 {
     uint8_t add;
 
+	if(count==0)return;
+
 
     add      =   (ADDR_FIFO & 0x3F);               // bit7,6=00, config as addr/write mode
 
@@ -202,6 +204,8 @@ void sky1311WriteFifo(uint8_t *data, uint8_t count)
 void sky1311ReadFifo(uint8_t *data, uint8_t count)
 {
     uint8_t add;
+
+	if(count==0)return;
 
     add   =   (ADDR_FIFO & 0x3F) | 0x40;            // bit7,6=01, config as addr/read mode
 
