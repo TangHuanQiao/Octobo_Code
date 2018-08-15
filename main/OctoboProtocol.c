@@ -10,7 +10,7 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 		uint8_t TempData=0;
 		uint8_t i=0;
 
-		if(buf[0]==START_FLAG&&buf[1]==STRING_FORMAT)
+		if(buf[0]==START_FLAG&&buf[1]==STRING_FORMAT&&(len==buf[2]+4))
 			{
 				switch(buf[3])
 					{
@@ -19,7 +19,7 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 						break;
 
 						case P2O_LED_CMD:
-							if(buf[2]==RGB_LED_MaxNUM*3)
+							if((buf[2]==RGB_LED_MaxNUM*3))
 								for(i=0;i<RGB_LED_MaxNUM*3;i++)
 									LED_Brightness_Set(i,buf[4+i]);
 
