@@ -286,10 +286,6 @@ void app_main()
 	ble_spp_server_start();
 
 
-
-	LED_Test_Dispaly();
-
-
 	for(;;)
 	{
 	  
