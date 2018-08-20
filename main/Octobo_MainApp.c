@@ -16,7 +16,9 @@
 
 
 
-static const uint8_t Touch_Ch_Tab[]={9,8,2,3,4,5,6,7};
+static const uint8_t Touch_Ch_Tab[]={9,8,2,3,
+										4,5,6,7};
+
 static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
 							       KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
 
@@ -88,21 +90,8 @@ void BSP_ADC_Init(void)
 
  void KeyEventCallBack(UINT32 KeyVal)
 {
-   uint8_t tempDataBuf[2];
-   uint32_t TOUCH_Num;
+	uint8_t tempDataBuf[2];
 
-  	
-   TOUCH_Num=KeyVal&0xffff;
-    for(int i=1;TOUCH_Num>0;i++)
-   	{
-		TOUCH_Num=TOUCH_Num>>1;
-		if(TOUCH_Num==1)
-			{
-				TOUCH_Num=i;
-				break;
-			}
-   	}
- 
    
 	switch(KeyVal)
 		{
@@ -125,60 +114,6 @@ void BSP_ADC_Init(void)
 			break;
 
 
-
-
-
-			case KEY_VAL_TOUCH1_DOWN:
-			case KEY_VAL_TOUCH2_DOWN:			
-			case KEY_VAL_TOUCH3_DOWN:
-			case KEY_VAL_TOUCH4_DOWN:
-			case KEY_VAL_TOUCH5_DOWN:			
-			case KEY_VAL_TOUCH6_DOWN:
-			case KEY_VAL_TOUCH7_DOWN:			
-			case KEY_VAL_TOUCH8_DOWN:
-
-			tempDataBuf[0]=TOUCH_Num;
-			tempDataBuf[1]=TOUCH_PRESS;
-			OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);					
-			printf("-----%d TOUCH is Down-------\r\n",TOUCH_Num);
-
-			break;
-
-
-			case KEY_VAL_TOUCH1_SHORT_UP:
-			case KEY_VAL_TOUCH2_SHORT_UP:			
-			case KEY_VAL_TOUCH3_SHORT_UP:
-			case KEY_VAL_TOUCH4_SHORT_UP:
-			case KEY_VAL_TOUCH5_SHORT_UP:			
-			case KEY_VAL_TOUCH6_SHORT_UP:
-			case KEY_VAL_TOUCH7_SHORT_UP:			
-			case KEY_VAL_TOUCH8_SHORT_UP:
-
-			
-			tempDataBuf[0]=TOUCH_Num;
-			tempDataBuf[1]=TOUCH_RELEASE;
-			OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);				
-			printf("----%d TOUCH is SHORT_UP--\r\n",TOUCH_Num);
-
-			break;
-
-			case KEY_VAL_TOUCH1_LONG_UP:
-			case KEY_VAL_TOUCH2_LONG_UP:			
-			case KEY_VAL_TOUCH3_LONG_UP:
-			case KEY_VAL_TOUCH4_LONG_UP:
-			case KEY_VAL_TOUCH5_LONG_UP:			
-			case KEY_VAL_TOUCH6_LONG_UP:
-			case KEY_VAL_TOUCH7_LONG_UP:			
-			case KEY_VAL_TOUCH8_LONG_UP:
-					
-			tempDataBuf[0]=TOUCH_Num;
-			tempDataBuf[1]=TOUCH_RELEASE;
-			OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);
-			printf("----%d TOUCH is LONG_UP--\r\n",TOUCH_Num);
-
-			break;			
-
-
 		}
 }
 
@@ -187,22 +122,76 @@ void BSP_ADC_Init(void)
  void KeyValConvert(UINT32 *pKeyVal)
 {
 	    uint16_t touch_filter_value;
+			   uint16_t  TouchKeyValue=0;
+		static uint16_t TouchKeyValueBack=0;		
+		uint8_t tempDataBuf[2];
+		
+		static uint8_t count=0;
+		count++;
 
 
+//-------------key-------------------		
 		if(gpio_get_level(HOME_KEY_IO)!=0)			
 			*pKeyVal|=KEY_VAL_POWER;
+
+
 		
+//-------------touch--------------------		
   		for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
 		{
 			touch_pad_read_filtered(Touch_Ch_Tab[i], &touch_filter_value);
 
 			if(touch_filter_value<600)			
 				{
-				 *pKeyVal|=Touch_KEY_VAL_Tab[i];
-				 printf("Touch_Ch %d:[%4d]\n",Touch_Ch_Tab[i], touch_filter_value);
+				 TouchKeyValue|=Touch_KEY_VAL_Tab[i];				 
 				}
+
+
+				if(count%100==0)
+					{
+						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
+						
+						if(i==sizeof(Touch_Ch_Tab)-1)
+						printf("\r\n");
+					}
 				
   		}
+
+
+
+
+
+	   for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
+	   	{
+			if((TouchKeyValue&Touch_KEY_VAL_Tab[i])&&!(TouchKeyValueBack&Touch_KEY_VAL_Tab[i]))
+				{
+					printf("-----%d TOUCH is Down-------\r\n",i+1);
+					TouchKeyValueBack|=Touch_KEY_VAL_Tab[i];
+
+					tempDataBuf[0]=i+1;
+					tempDataBuf[1]=TOUCH_PRESS;
+					OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);	
+
+				}
+
+			else if(!(TouchKeyValue&Touch_KEY_VAL_Tab[i])&&(TouchKeyValueBack&Touch_KEY_VAL_Tab[i]))
+				{
+					printf("-----%d TOUCH is UP-------\r\n",i+1);
+					TouchKeyValueBack&=~(Touch_KEY_VAL_Tab[i]);
+
+
+					tempDataBuf[0]=i+1;
+					tempDataBuf[1]=TOUCH_RELEASE;
+					OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);	
+
+				}
+
+
+
+
+
+
+	   	}
 			
 		
 }
