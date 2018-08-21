@@ -147,13 +147,13 @@ void BSP_ADC_Init(void)
 				}
 
 
-				if(count%100==0)
-					{
-						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
-						
-						if(i==sizeof(Touch_Ch_Tab)-1)
-						printf("\r\n");
-					}
+//				if(count%100==0)
+//					{
+//						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
+//						
+//						if(i==sizeof(Touch_Ch_Tab)-1)
+//						printf("\r\n");
+//					}
 				
   		}
 

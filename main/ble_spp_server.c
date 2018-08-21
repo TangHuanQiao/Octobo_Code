@@ -139,7 +139,7 @@ static const uint16_t primary_service_uuid = ESP_GATT_UUID_PRI_SERVICE;
 static const uint16_t character_declaration_uuid = ESP_GATT_UUID_CHAR_DECLARE;
 static const uint16_t character_client_config_uuid = ESP_GATT_UUID_CHAR_CLIENT_CONFIG;
 
-static const uint8_t char_prop_read_notify = ESP_GATT_CHAR_PROP_BIT_READ|ESP_GATT_CHAR_PROP_BIT_NOTIFY;
+static const uint8_t char_prop_read_notify = ESP_GATT_CHAR_PROP_BIT_WRITE_NR|ESP_GATT_CHAR_PROP_BIT_NOTIFY;
 static const uint8_t char_prop_read_write = ESP_GATT_CHAR_PROP_BIT_WRITE_NR|ESP_GATT_CHAR_PROP_BIT_READ;
 
 #ifdef SUPPORT_HEARTBEAT
@@ -198,7 +198,7 @@ static const esp_gatts_attr_db_t spp_gatt_db[SPP_IDX_NB] =
 
     //SPP -  data notify characteristic Value
     [SPP_IDX_SPP_DATA_NTY_VAL]   =
-    {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&spp_data_notify_uuid, ESP_GATT_PERM_READ,
+    {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&spp_data_notify_uuid, ESP_GATT_PERM_READ|ESP_GATT_PERM_WRITE,
     SPP_DATA_MAX_LEN, sizeof(spp_data_notify_val), (uint8_t *)spp_data_notify_val}},
 
     //SPP -  data notify characteristic - Client Characteristic Configuration Descriptor
@@ -525,7 +525,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                     }
                 }
 #endif
-                else if(res == SPP_IDX_SPP_DATA_RECV_VAL){
+                else if(res == SPP_IDX_SPP_DATA_NTY_VAL){
 //#ifdef SPP_DEBUG_MODE
 //                    esp_log_buffer_char(GATTS_TABLE_TAG,(char *)(p_data->write.value),p_data->write.len);
 //#else
