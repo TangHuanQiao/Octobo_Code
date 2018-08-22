@@ -30,9 +30,11 @@
 ///Attributes State Machine
 enum{
     SPP_IDX_SVC,
-
+		
+#ifdef SUPPORT_SPP_RECEIVE
     SPP_IDX_SPP_DATA_RECV_CHAR,
     SPP_IDX_SPP_DATA_RECV_VAL,
+#endif
 
     SPP_IDX_SPP_DATA_NOTIFY_CHAR,
     SPP_IDX_SPP_DATA_NTY_VAL,

@@ -31,13 +31,16 @@
 #define SPP_PROFILE_NUM             1
 #define SPP_PROFILE_APP_IDX         0
 #define ESP_SPP_APP_ID              0x56
-#define SAMPLE_DEVICE_NAME          "Octobo"
+#define SAMPLE_DEVICE_NAME          "BM71_BLE"
 #define SPP_SVC_INST_ID	            0
 
 /// SPP Service
 static const uint16_t spp_service_uuid = 0xABF0;
 /// Characteristic UUID
+#ifdef SUPPORT_SPP_RECEIVE
 #define ESP_GATT_UUID_SPP_DATA_RECEIVE      0xABF1
+#endif
+
 #define ESP_GATT_UUID_SPP_DATA_NOTIFY       0xABF2
 
 #ifdef SUPPORT_SPP_COMMAND_STATUS
@@ -52,7 +55,7 @@ static const uint16_t spp_service_uuid = 0xABF0;
 static const uint8_t spp_adv_data[23] = {
     0x02,0x01,0x06,
     0x03,0x03,0xF0,0xAB,
-    0x0F,0x09,0x45,0x53,0x50,0x5f,0x53,0x50,0x50,0x5f,0x53,0x45,0x52,0x56,0x45,0x52
+    0x0F,0x09,'B','M','7','1','_','B','L','E',0,0,0,0,0,0
 };
 
 static uint16_t spp_mtu_size = 23;
@@ -146,9 +149,11 @@ static const uint8_t char_prop_read_write = ESP_GATT_CHAR_PROP_BIT_WRITE_NR|ESP_
 static const uint8_t char_prop_read_write_notify = ESP_GATT_CHAR_PROP_BIT_READ|ESP_GATT_CHAR_PROP_BIT_WRITE_NR|ESP_GATT_CHAR_PROP_BIT_NOTIFY;
 #endif
 
+#ifdef SUPPORT_SPP_RECEIVE
 ///SPP Service - data receive characteristic, read&write without response
 static const uint16_t spp_data_receive_uuid = ESP_GATT_UUID_SPP_DATA_RECEIVE;
 static const uint8_t  spp_data_receive_val[20] = {0x00};
+#endif
 
 ///SPP Service - data notify characteristic, notify&read
 static const uint16_t spp_data_notify_uuid = ESP_GATT_UUID_SPP_DATA_NOTIFY;
@@ -181,6 +186,7 @@ static const esp_gatts_attr_db_t spp_gatt_db[SPP_IDX_NB] =
     {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&primary_service_uuid, ESP_GATT_PERM_READ,
     sizeof(spp_service_uuid), sizeof(spp_service_uuid), (uint8_t *)&spp_service_uuid}},
 
+#ifdef SUPPORT_SPP_RECEIVE
     //SPP -  data receive characteristic Declaration
     [SPP_IDX_SPP_DATA_RECV_CHAR]            =
     {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&character_declaration_uuid, ESP_GATT_PERM_READ,
@@ -190,6 +196,7 @@ static const esp_gatts_attr_db_t spp_gatt_db[SPP_IDX_NB] =
     [SPP_IDX_SPP_DATA_RECV_VAL]             	=
     {{ESP_GATT_AUTO_RSP}, {ESP_UUID_LEN_16, (uint8_t *)&spp_data_receive_uuid, ESP_GATT_PERM_READ|ESP_GATT_PERM_WRITE,
     SPP_DATA_MAX_LEN,sizeof(spp_data_receive_val), (uint8_t *)spp_data_receive_val}},
+#endif
 
     //SPP -  data notify characteristic Declaration
     [SPP_IDX_SPP_DATA_NOTIFY_CHAR]  =
@@ -540,7 +547,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                 }else{
                     //TODO:
                 }
-            }else if((p_data->write.is_prep == true)&&(res == SPP_IDX_SPP_DATA_RECV_VAL)){
+            }else if((p_data->write.is_prep == true)&&(res == SPP_IDX_SPP_DATA_NTY_VAL)){
                 ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_PREP_WRITE_EVT : handle = %d\n", res);
                 store_wr_buffer(p_data);
             }
