@@ -22,7 +22,8 @@ static const uint8_t Touch_Ch_Tab[]={9,8,2,3,
 static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
 							       KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
 
-
+static const uint16_t Touch_Press_Threshold[]={750,750,750,750,
+												750,750,750,750};
 
 
 static esp_adc_cal_characteristics_t *adc_chars;
@@ -141,19 +142,19 @@ void BSP_ADC_Init(void)
 		{
 			touch_pad_read_filtered(Touch_Ch_Tab[i], &touch_filter_value);
 
-			if(touch_filter_value<600)			
+			if(touch_filter_value<Touch_Press_Threshold[i])			
 				{
 				 TouchKeyValue|=Touch_KEY_VAL_Tab[i];				 
 				}
 
 
-//				if(count%100==0)
-//					{
+				if(count%100==0)
+					{
 //						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
 //						
 //						if(i==sizeof(Touch_Ch_Tab)-1)
 //						printf("\r\n");
-//					}
+					}
 				
   		}
 
