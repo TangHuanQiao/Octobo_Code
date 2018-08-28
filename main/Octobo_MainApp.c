@@ -148,7 +148,7 @@ void BSP_ADC_Init(void)
 				}
 
 
-				if(count%100==0)
+				if(count%10==0)
 					{
 						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
 						
