@@ -1,37 +1,21 @@
 RFID.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.c \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/newlib.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/config.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/ieeefp.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/features.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_types.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_types.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/lock.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/types.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/types.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/stdlib.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/alloca.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/string.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/string.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/spi_master.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/assert.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/hal.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
@@ -42,9 +26,16 @@ RFID.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_context.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/stdlib.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/alloca.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_assert.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/assert.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/projdefs.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portable.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/deprecated_definitions.h \
@@ -54,6 +45,12 @@ RFID.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-core-state.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_crosscore_int.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_timer.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/types.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/types.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/esp_heap_caps.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/multi_heap.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/soc_memory_layout.h \
@@ -79,18 +76,23 @@ RFID.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_api.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/task.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/spi_common.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/lldesc.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/queue.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/spi_periph.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/spi_pins.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Sky1311/sky1311t.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Sky1311/sky1311t_reg.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/typedef.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Iso14443/iso14443.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/cardoper.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/userdef.h
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h:
 
@@ -104,55 +106,21 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h:
-
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_types.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_types.h:
 
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h:
+
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/lock.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/types.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/types.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/stdlib.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/alloca.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/string.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/string.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/spi_master.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/assert.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
 
@@ -174,11 +142,25 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h:
 
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/stdlib.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/alloca.h:
+
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_assert.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/assert.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/projdefs.h:
 
@@ -197,6 +179,18 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_crosscore_int.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_timer.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/types.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/types.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/esp_heap_caps.h:
 
@@ -248,23 +242,29 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freert
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/task.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/spi_common.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/lldesc.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/queue.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/spi_periph.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Sky1311/sky1311t.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/periph_defs.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Sky1311/sky1311t_reg.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/spi_pins.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/typedef.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/spi_reg.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Iso14443/iso14443.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/spi_struct.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/cardoper.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/userdef.h:
 /home/Administrator/esp/Octobo_Code/main/./RFID.c:

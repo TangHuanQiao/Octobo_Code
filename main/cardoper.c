@@ -3,6 +3,7 @@
 #include "sky1311t.h"
 #include "iso14443.h"
 #include "userdef.h"
+#include "OctoboProtocol.h"
 
 
 
@@ -270,6 +271,12 @@ sta_result_t mifare1_ReadTest(uint8_t *UID)
                 sta = M1_Read(block_num, tmpBuf);
                 if(sta==Ok)
                 {
+
+					if(block_num==0)
+						{
+							uint8_t TempData=1;
+							OctoboProtocolSendPack(O2P_RFID_CMD,&TempData,1);
+						}
 #if DEBUG==1
                     uart_puts("Block ");
                     uart_putHex(block_num);

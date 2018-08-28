@@ -150,10 +150,10 @@ void BSP_ADC_Init(void)
 
 				if(count%100==0)
 					{
-//						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
-//						
-//						if(i==sizeof(Touch_Ch_Tab)-1)
-//						printf("\r\n");
+						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
+						
+						if(i==sizeof(Touch_Ch_Tab)-1)
+						printf("\r\n");
 					}
 				
   		}
@@ -171,7 +171,7 @@ void BSP_ADC_Init(void)
 
 					tempDataBuf[0]=i+1;
 					tempDataBuf[1]=TOUCH_PRESS;
-					OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);	
+					OctoboProtocolSendPack(O2P_TOUCH_CMD,tempDataBuf,2);	
 
 				}
 
@@ -183,7 +183,7 @@ void BSP_ADC_Init(void)
 
 					tempDataBuf[0]=i+1;
 					tempDataBuf[1]=TOUCH_RELEASE;
-					OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,2);	
+					OctoboProtocolSendPack(O2P_TOUCH_CMD,tempDataBuf,2);	
 
 				}
 
