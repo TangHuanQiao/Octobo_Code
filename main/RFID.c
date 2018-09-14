@@ -8,6 +8,9 @@
 #include "cardoper.h"
 #include "userdef.h"
 
+#include "RFID.h"
+#include "I2C_Demo.h"
+
 uint16_t rcValue;
 boolean hasCardIn=false;
 #define  CARDREMOVED        0
@@ -18,10 +21,20 @@ uint8_t  cardStatus = CARDREMOVED;
 
 static xQueueHandle gpio_evt_queue = NULL;
 
-
+static uint8_t RFID_State=RFID_ENABLE;
 
 static void RFID_Task(void* arg);
 
+
+void SetRFID_State(uint8_t state)
+{
+	RFID_State=state;
+}
+
+uint8_t GetRFID_State(void)
+{
+  return RFID_State;
+}
 
 
 
@@ -77,15 +90,19 @@ void RFID_Task(void* arg)
 	while(1)
 	{
 		DelayMS(200);
-	    if(Ok != TypeA_test())              // read Type A card
-	    {
-			DelayMS(100);
-	        if(Ok!= SmartTypeB_test())      // read Type B card
-	        {
 
-	        }
-	    }
-	    sky1311Reset();
+		if(GetRFID_State())
+			{
+			    if(Ok != TypeA_test())              // read Type A card
+			    {
+					DelayMS(100);
+			        if(Ok!= SmartTypeB_test())      // read Type B card
+			        {
+
+			        }
+			    }
+			    sky1311Reset();
+			}
 
 	}
 #else

@@ -2,6 +2,7 @@
 #include "OctoboProtocol.h"
 #include "Octobo_MainApp.h"
 #include "LED_Ctr.h"
+#include "RFID.h"
 
 
 
@@ -15,7 +16,7 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 				switch(buf[3])
 					{
 						case P2O_RFID_CMD:
-
+							SetRFID_State(buf[4]);
 						break;
 
 						case P2O_LED_CMD:

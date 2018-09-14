@@ -93,7 +93,13 @@ Octobo_MainApp.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -282,4 +288,16 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
 /home/Administrator/esp/Octobo_Code/main/./Octobo_MainApp.c:

@@ -13,6 +13,7 @@
 #include "OctoboProtocol.h"
 #include "RFID.h"
 #include "Octobo_MainApp.h"
+#include "I2C_Demo.h"
 
 
 
@@ -268,6 +269,8 @@ void app_main()
 	BSP_TouchPad_Init();
 
 	BSP_ADC_Init();
+
+	i2c_demo_init();
 	
 	LED_Ctr_Init();
 

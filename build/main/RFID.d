@@ -88,7 +88,13 @@ RFID.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/typedef.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Iso14443/iso14443.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/cardoper.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/userdef.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/userdef.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -267,4 +273,16 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/Iso
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/cardoper.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/userdef.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
 /home/Administrator/esp/Octobo_Code/main/./RFID.c:

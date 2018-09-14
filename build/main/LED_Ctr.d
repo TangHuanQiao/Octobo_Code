@@ -1,14 +1,21 @@
 LED_Ctr.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.c \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/features.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/newlib.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/config.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/ieeefp.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/features.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_types.h \
@@ -18,11 +25,6 @@ LED_Ctr.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/types.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h \
@@ -83,8 +85,27 @@ LED_Ctr.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/features.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -96,13 +117,7 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/ieeefp.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/features.h:
-
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core-isa.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h:
 
@@ -121,16 +136,6 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_err.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h:
 
@@ -253,6 +258,4 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freert
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
-
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 /home/Administrator/esp/Octobo_Code/main/./LED_Ctr.c:

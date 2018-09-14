@@ -48,7 +48,52 @@ OctoboProtocol.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/gpio_pins.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_intr_alloc.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/gpio_periph.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/hal.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/tie.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/system.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_context.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/corebits.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/soc.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/projdefs.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portable.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/deprecated_definitions.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portmacro.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/specreg.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-core-state.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_crosscore_int.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_timer.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/esp_heap_caps.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/multi_heap.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/soc_memory_layout.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portbenchmark.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/mpu_wrappers.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_system.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_sleep.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/touch_pad.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_intr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_api.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/task.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h:
 
@@ -147,4 +192,94 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/gpio_periph.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/hal.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtensa-versions.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core-matmap.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/tie.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/system.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_context.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/corebits.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-frames.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/soc.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/projdefs.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portable.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/deprecated_definitions.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portmacro.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/specreg.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/xtruntime-core-state.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_crosscore_int.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_timer.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/esp_heap_caps.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/heap/include/multi_heap.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/include/soc/soc_memory_layout.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/portbenchmark.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/mpu_wrappers.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_system.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_sleep.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/touch_pad.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_intr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/rom/ets_sys.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_api.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/touch_channel.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/task.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
+
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h:
 /home/Administrator/esp/Octobo_Code/main/./OctoboProtocol.c:
