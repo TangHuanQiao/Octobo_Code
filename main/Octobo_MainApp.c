@@ -14,6 +14,7 @@
 #include "RFID.h"
 #include "Octobo_MainApp.h"
 #include "I2C_Demo.h"
+#include "TouchSensor.h"
 
 
 
@@ -149,16 +150,18 @@ void BSP_ADC_Init(void)
 				}
 
 
-				if(count%10==0)
-					{
-						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
-						
-						if(i==sizeof(Touch_Ch_Tab)-1)
-						printf("\r\n");
-					}
+//				if(count%10==0)
+//					{
+//						printf("TOUCH %d:[%4d] ",i+1, touch_filter_value);
+//						if(i==sizeof(Touch_Ch_Tab)-1)
+//						printf("\r\n");
+//					}
 				
   		}
+		
 
+	   if(count%20==0)
+	   TouchReadState();
 
 
 
