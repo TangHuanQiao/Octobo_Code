@@ -99,14 +99,19 @@ void BSP_ADC_Init(void)
 	switch(KeyVal)
 		{
 			case KEY_VAL_POWER_DOWN :
+				
+			break;
+
+			case KEY_VAL_POWER_SHORT_UP:
 				tempDataBuf[0]=BUTTON_PRESS;
 				OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,1);
+				printf("---KEY_VAL_POWER_SHORT_UP---\r\n");
 			break;
 
 			
 			case KEY_VAL_POWER_PRESS_START:
 			case KEY_VAL_POWER_PRESS:
-				
+				printf("----------------long long long long long------------\r\n");
 				tempDataBuf[0]=BUTTON_LONG_PRESS;
 				OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,1);			
 				esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
@@ -161,7 +166,8 @@ void BSP_ADC_Init(void)
 		
 
 	   if(count%20==0)
-	   TouchReadState();
+		   TouchReadState();
+
 
 
 

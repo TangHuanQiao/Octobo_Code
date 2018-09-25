@@ -12,7 +12,7 @@ void TouchReadState(void)
 	
 	Touch_i2c_read(0,&data);
 	
-	printf("======TouchReadState==%d===\r\n",data);
+//	printf("======TouchReadState==%d===\r\n",data);
 
 }
 
