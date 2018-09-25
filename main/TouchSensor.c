@@ -22,7 +22,7 @@ void TouchReadState(void)
 {
 	i2c_demo_write(SLAVE_ADD,I2C_NUM_1,&RegAddr,1);
 
-	return i2c_demo_read(SLAVE_ADD,I2C_NUM_1,pData,1);
+	return 0;
 }
 
 

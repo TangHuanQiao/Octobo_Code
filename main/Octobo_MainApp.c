@@ -291,7 +291,7 @@ void app_main()
 	for(;;)
 	{
 	  
-	  BatteyCheck();
+//	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
 	  
