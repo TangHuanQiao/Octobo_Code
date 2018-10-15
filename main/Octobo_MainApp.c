@@ -17,12 +17,14 @@
 #include "TouchSensor.h"
 
 
+static const uint32_t Touch_ChIO_Tab[]={TOUCH_CH9_IO,TOUCH_CH8_IO,TOUCH_CH2_IO,TOUCH_CH3_IO,
+										TOUCH_CH4_IO,TOUCH_CH5_IO,TOUCH_CH6_IO,TOUCH_CH7_IO};
 
 static const uint8_t Touch_Ch_Tab[]={9,8,2,3,
-										4,5,6,7};
+									 4,5,6,7};
 
 static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
-							       KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
+							     		  KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
 
 static const uint16_t Touch_Press_Threshold[]={750,750,750,750,
 												750,750,750,750};
@@ -147,12 +149,17 @@ void BSP_ADC_Init(void)
 //-------------touch--------------------		
   		for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
 		{
-			touch_pad_read_filtered(Touch_Ch_Tab[i], &touch_filter_value);
+#ifdef GPIO_TOUCH_FUN
+					if(gpio_get_level(Touch_ChIO_Tab[i])!=0)
+					   TouchKeyValue|=Touch_KEY_VAL_Tab[i];
+					
+#else
+				touch_pad_read_filtered(Touch_Ch_Tab[i], &touch_filter_value);
 
-			if(touch_filter_value<Touch_Press_Threshold[i])			
-				{
-				 TouchKeyValue|=Touch_KEY_VAL_Tab[i];				 
-				}
+				if(touch_filter_value<Touch_Press_Threshold[i])			
+					{
+					 TouchKeyValue|=Touch_KEY_VAL_Tab[i];				 
+					}
 
 
 //				if(count%10==0)
@@ -161,12 +168,12 @@ void BSP_ADC_Init(void)
 //						if(i==sizeof(Touch_Ch_Tab)-1)
 //						printf("\r\n");
 //					}
+#endif
 				
   		}
 		
 
-	   if(count%20==0)
-		   TouchReadState();
+
 
 
 
@@ -274,8 +281,9 @@ void app_main()
 	
 
 	BSP_Gpio_Init();
-
+#ifndef GPIO_TOUCH_FUN
 	BSP_TouchPad_Init();
+#endif
 
 	BSP_ADC_Init();
 
