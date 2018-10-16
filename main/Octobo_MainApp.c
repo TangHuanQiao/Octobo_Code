@@ -17,11 +17,11 @@
 #include "TouchSensor.h"
 
 
-static const uint32_t Touch_ChIO_Tab[]={TOUCH_CH9_IO,TOUCH_CH8_IO,TOUCH_CH2_IO,TOUCH_CH3_IO,
-										TOUCH_CH4_IO,TOUCH_CH5_IO,TOUCH_CH6_IO,TOUCH_CH7_IO};
+static const uint32_t Touch_ChIO_Tab[]={TOUCH_CH9_IO,TOUCH_CH8_IO,TOUCH_CH7_IO,TOUCH_CH6_IO,
+										TOUCH_CH5_IO,TOUCH_CH4_IO,TOUCH_CH3_IO,TOUCH_CH2_IO,};
 
-static const uint8_t Touch_Ch_Tab[]={9,8,2,3,
-									 4,5,6,7};
+static const uint8_t Touch_Ch_Tab[]={9,8,7,6,
+									 5,4,3,2};
 
 static const uint32_t Touch_KEY_VAL_Tab[]={KEY_VAL_TOUCH1,KEY_VAL_TOUCH2,KEY_VAL_TOUCH3,KEY_VAL_TOUCH4,
 							     		  KEY_VAL_TOUCH5,KEY_VAL_TOUCH6,KEY_VAL_TOUCH7,KEY_VAL_TOUCH8};
