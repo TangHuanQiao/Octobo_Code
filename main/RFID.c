@@ -38,15 +38,6 @@ uint8_t GetRFID_State(void)
 
 
 
-static void IRAM_ATTR gpio_isr_handler(void* arg)
-{
-    uint32_t gpio_num = (uint32_t) arg;
-	if(gpio_num==RFID_INT_IO)
-    xQueueSendFromISR(gpio_evt_queue, &gpio_num, NULL);
-
-
-}
-
 
 
 
@@ -54,16 +45,6 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
 void RFID_Init(void)
 {
 	SPI_Config();
-
-	
-
-	//install gpio isr service
-	gpio_install_isr_service(0);
-	//hook isr handler for specific gpio pin
-	gpio_isr_handler_add(RFID_INT_IO, gpio_isr_handler, (void*) RFID_INT_IO);
-
-		//create a queue to handle gpio event from isr
-	gpio_evt_queue = xQueueCreate(1, sizeof(uint32_t));
 
 	xTaskCreate(RFID_Task, "RFID_Task", 1024*3, (void* ) 0, 1, NULL);
 

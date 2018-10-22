@@ -52,7 +52,7 @@ void BSP_Gpio_Init(void)
 
 	//	gpio_set_level(GPIO_OUTPUT_IO_0,0);
 
-    //interrupt of rising edge
+ 
     io_conf.intr_type = GPIO_PIN_INTR_DISABLE;
 	io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;	
 	io_conf.mode = GPIO_MODE_INPUT;
@@ -68,9 +68,14 @@ void BSP_TouchPad_Init(void)
     // The default fsm mode is software trigger mode.
     touch_pad_init();
 	touch_pad_set_voltage(TOUCH_HVOLT_2V7, TOUCH_LVOLT_0V5, TOUCH_HVOLT_ATTEN_1V);
+
+#ifndef GPIO_TOUCH_FUN	
 	for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
 	touch_pad_config(Touch_Ch_Tab[i], TOUCH_THRESH_NO_USE);
-	
+#else
+	touch_pad_config(1, TOUCH_THRESH_NO_USE);	
+#endif
+
 	touch_pad_filter_start(TOUCHPAD_FILTER_TOUCH_PERIOD);
 
 
@@ -131,7 +136,7 @@ void BSP_ADC_Init(void)
 
  void KeyValConvert(UINT32 *pKeyVal)
 {
-	    uint16_t touch_filter_value;
+	
 			   uint16_t  TouchKeyValue=0;
 		static uint16_t TouchKeyValueBack=0;		
 		uint8_t tempDataBuf[2];
@@ -150,10 +155,13 @@ void BSP_ADC_Init(void)
   		for(uint8_t i=0;i<sizeof(Touch_Ch_Tab);i++)
 		{
 #ifdef GPIO_TOUCH_FUN
-					if(gpio_get_level(Touch_ChIO_Tab[i])!=0)
-					   TouchKeyValue|=Touch_KEY_VAL_Tab[i];
+				if(gpio_get_level(Touch_ChIO_Tab[i])!=0)
+					TouchKeyValue|=Touch_KEY_VAL_Tab[i];
+
 					
 #else
+				uint16_t touch_filter_value;
+
 				touch_pad_read_filtered(Touch_Ch_Tab[i], &touch_filter_value);
 
 				if(touch_filter_value<Touch_Press_Threshold[i])			
@@ -281,9 +289,8 @@ void app_main()
 	
 
 	BSP_Gpio_Init();
-#ifndef GPIO_TOUCH_FUN
-	BSP_TouchPad_Init();
-#endif
+
+	BSP_TouchPad_Init(); //不配置该函数 RFID功能不正常 原因未明
 
 	BSP_ADC_Init();
 
