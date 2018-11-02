@@ -4,6 +4,7 @@
 #include "iso14443.h"
 #include "userdef.h"
 #include "OctoboProtocol.h"
+#include "RFID.h"
 
 
 
@@ -272,10 +273,11 @@ sta_result_t mifare1_ReadTest(uint8_t *UID)
                 if(sta==Ok)
                 {
 
-					if(block_num==0)
-						{
+					if(block_num==0&&Get_rfid_ReportAppState()==0)
+						{	
 							uint8_t TempData=1;
-							OctoboProtocolSendPack(O2P_RFID_CMD,&TempData,1);
+							Set_RFID_ReportAppState(1);
+							OctoboProtocolSendPack(O2P_RFID_CMD,&TempData,1);							
 						}
 #if DEBUG==1
                     uart_puts("Block ");
@@ -776,7 +778,7 @@ sta_result_t TypeA_test(void)
 #endif
     }
     else
-    {
+    {	
         sky1311Reset();
         return ErrorRequest;            // 这里返回，有可能是没卡或者没读到
     }
