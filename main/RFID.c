@@ -79,19 +79,20 @@ void RFID_Task(void* arg)
 
 	while(1)
 	{
-		DelayMS(200);
+		DelayMS(50);
 
 		if(GetRFID_State())
 			{
 			    if(Ok != TypeA_test())              // read Type A card
 			    {
-			       	Set_RFID_ReportAppState(0);
-		
+			    
+					#if 0
 					DelayMS(100);
 			        if(Ok!= SmartTypeB_test())      // read Type B card
 			        {
 
 			        }
+					#endif
 			    }
 
 			    sky1311Reset();

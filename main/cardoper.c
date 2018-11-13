@@ -259,7 +259,7 @@ sta_result_t mifare1_ReadTest(uint8_t *UID)
     uart_puts("\r\nRead Mifare1 test\r\n");
 #endif
     /* read test Mifare 1K card (0--63 block) */
-    for(sector_num=0;sector_num<16;sector_num++)// read sector0--16
+    for(sector_num=0;sector_num<1;sector_num++)// read sector0--16
     //for(block_num=0;block_num<64;) // read block0--63
     {
         sta = M1_Authentication_Auto(M1_AUTH_KEYA, default_key , UID, block_num);
@@ -273,11 +273,20 @@ sta_result_t mifare1_ReadTest(uint8_t *UID)
                 if(sta==Ok)
                 {
 
-					if(block_num==0&&Get_rfid_ReportAppState()==0)
+					if(block_num==1&&Get_rfid_ReportAppState()==0)
 						{	
-							uint8_t TempData=1;
-							Set_RFID_ReportAppState(1);
-							OctoboProtocolSendPack(O2P_RFID_CMD,&TempData,1);							
+							if(tmpBuf[0]==0xdb&&tmpBuf[1]==0xfb)
+								{
+								
+									uint8_t TempData=tmpBuf[2]/16*10+tmpBuf[2]%16;
+									if(TempData<32)
+										{
+										Set_RFID_ReportAppState(1);
+										OctoboProtocolSendPack(O2P_RFID_CMD,&TempData,1);
+										printf("\r\ncard num=====%d\r\n",TempData);
+										}
+								}
+							break;
 						}
 #if DEBUG==1
                     uart_puts("Block ");
@@ -776,9 +785,19 @@ sta_result_t TypeA_test(void)
         uart_newrow();
 
 #endif
+		if(Get_rfid_ReportAppState()!=0)
+			Set_RFID_ReportAppState(1);
     }
     else
     {	
+		if(Get_rfid_ReportAppState()>=4)
+		Set_RFID_ReportAppState(0);
+		else if(Get_rfid_ReportAppState()!=0)
+			{
+				Set_RFID_ReportAppState(Get_rfid_ReportAppState()+1);
+			}
+
+	
         sky1311Reset();
         return ErrorRequest;            // 这里返回，有可能是没卡或者没读到
     }

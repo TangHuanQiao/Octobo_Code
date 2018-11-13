@@ -50,5 +50,5 @@
 #define RSSI_DELTA      6
 #define RSSI_ABS        8
 
-#define DEBUG           1
+#define DEBUG           0
 #endif
