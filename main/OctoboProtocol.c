@@ -8,7 +8,6 @@
 
 void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 {
-		uint8_t TempData=0;
 		uint8_t i=0;
 
 		if(buf[0]==START_FLAG&&buf[1]==STRING_FORMAT&&(len==buf[2]+4))
@@ -28,8 +27,13 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 
 
 						case P2O_VOLTAGE_CMD:
-							TempData=GetBaterryState();
-							OctoboProtocolSendPack(O2P_VOLTAGE_CMD,&TempData,1);
+							{
+								uint16_t u16TempData=GetBaterryState();
+								uint8_t TempDatabuf[2]={0};
+								TempDatabuf[0]=(u16TempData&0xff00)>>8;
+								TempDatabuf[1]=u16TempData&0x00ff;
+								OctoboProtocolSendPack(O2P_VOLTAGE_CMD,TempDatabuf,2);
+							}
 						
 						break;
 

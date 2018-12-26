@@ -14,6 +14,9 @@
 #define TOUCH_CH6_IO  14
 #define TOUCH_CH7_IO  27
 
+#define TOUCH_POWER_IO 16
+#define TOUCH_POWER_OFF()  gpio_set_level(TOUCH_POWER_IO,0)
+#define TOUCH_POWER_ON()  gpio_set_level(TOUCH_POWER_IO,1)
 
 #define HOME_KEY_IO     34
 
@@ -28,7 +31,7 @@
 #endif
 
 
-#define GPIO_OUTPUT_PIN_SEL  ((1ULL<<LED_RESET_IO) | (1ULL<<RFID_POWER_IO))
+#define GPIO_OUTPUT_PIN_SEL  ((1ULL<<LED_RESET_IO) | (1ULL<<RFID_POWER_IO)|(1ULL<<TOUCH_POWER_IO))
 
 #define TOUCH_THRESH_NO_USE   (0)
 #define TOUCHPAD_FILTER_TOUCH_PERIOD (10)
@@ -41,7 +44,7 @@
 
 
 
-uint8_t GetBaterryState(void);
+uint16_t GetBaterryState(void);
 
 
 

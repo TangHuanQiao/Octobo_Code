@@ -82,7 +82,7 @@ void RFID_Task(void* arg)
 		DelayMS(50);
 
 		if(GetRFID_State())
-			{
+		{
 			    if(Ok != TypeA_test())              // read Type A card
 			    {
 			    
@@ -96,7 +96,10 @@ void RFID_Task(void* arg)
 			    }
 
 			    sky1311Reset();
-			}
+		}else
+		{
+			SKY1311_DISABLE();
+		}
 
 	}
 #else

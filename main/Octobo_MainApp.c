@@ -35,7 +35,7 @@ static const adc_channel_t channel = ADC_CHANNEL_7;     //GPIO34 if ADC1, GPIO14
 static const adc_atten_t atten = ADC_ATTEN_DB_0;
 static const adc_unit_t unit = ADC_UNIT_1;
 
-static uint8_t BaterryState=BAT_NORMAL;
+static uint16_t BaterryState=BAT_NORMAL;
 
 
 
@@ -120,7 +120,11 @@ void BSP_ADC_Init(void)
 			case KEY_VAL_POWER_PRESS:
 				printf("----------------long long long long long------------\r\n");
 				tempDataBuf[0]=BUTTON_LONG_PRESS;
-				OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,1);			
+				OctoboProtocolSendPack(O2P_KEY_CMD,tempDataBuf,1);	
+
+				SKY1311_DISABLE();	
+				TOUCH_POWER_OFF();
+				
 				esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
 				printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
 				vTaskDelay(100 / portTICK_PERIOD_MS);	  
@@ -238,16 +242,17 @@ static void BatteyCheck(void)
 	 adc_reading /= NO_OF_SAMPLES;
 	 //Convert adc_reading to voltage in mV
 	 uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
+	 voltage=voltage*13/2;		
+//	 printf("\r\n====voltage=%d===\r\n",voltage);
 
-	 if(voltage>1)
-		BaterryState=BAT_NORMAL;
-	 else
-	 	BaterryState=BAT_LOW;
+
+	BaterryState=voltage;
+
 
 }
 
 
-uint8_t GetBaterryState(void)
+uint16_t GetBaterryState(void)
 {
 
 	return BaterryState;
@@ -290,6 +295,8 @@ void app_main()
 
 	BSP_Gpio_Init();
 
+	TOUCH_POWER_ON();
+
 	BSP_TouchPad_Init(); //不配置该函数 RFID功能不正常 原因未明
 
 	BSP_ADC_Init();
@@ -306,7 +313,7 @@ void app_main()
 	for(;;)
 	{
 	  
-//	  BatteyCheck();
+	  BatteyCheck();
 	  keyScanTask();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
 	  
