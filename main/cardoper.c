@@ -289,10 +289,14 @@ sta_result_t mifare1_ReadTest(uint8_t *UID)
 							}else if(tmpBuf[0]==0xdb&&tmpBuf[1]==0xfb)
 							{
 							
-								uint8_t TempData=tmpBuf[2]/16*10+tmpBuf[2]%16;
+								uint16_t u16TempData=(tmpBuf[2]/16*10+tmpBuf[2]%16)+(tmpBuf[3]/16*10+tmpBuf[3]%16)*100;
+								uint8_t TempData[2]={0};
+								TempData[0]=(u16TempData&0xff00)>>8;
+								TempData[1]=u16TempData&0x00ff;
 								Set_RFID_ReportAppState(1);
-								OctoboProtocolSendPack(O2P_RFID_CMD,&TempData,1);
-								printf("\r\ncard num=====%d\r\n",TempData);
+								OctoboProtocolSendPack(O2P_RFID_CMD,TempData,2);
+								printf("\r\ncard num=====%d\r\n",u16TempData);
+
 
 							}
 							
