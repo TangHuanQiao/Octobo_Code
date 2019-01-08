@@ -31,7 +31,7 @@
 #define SPP_PROFILE_NUM             1
 #define SPP_PROFILE_APP_IDX         0
 #define ESP_SPP_APP_ID              0x56
-#define SAMPLE_DEVICE_NAME          "BM71_BLE"
+#define SAMPLE_DEVICE_NAME          "Octobo_BLE"
 #define SPP_SVC_INST_ID	            0
 
 /// SPP Service
@@ -55,7 +55,7 @@ static const uint16_t spp_service_uuid = 0xABF0;
 static const uint8_t spp_adv_data[23] = {
     0x02,0x01,0x06,
     0x03,0x03,0xF0,0xAB,
-    0x0F,0x09,'B','M','7','1','_','B','L','E',0,0,0,0,0,0
+    0x0F,0x09,'O','c','t','o','b','o','_','B','L','E',0,0,0,0
 };
 
 static uint16_t spp_mtu_size = 23;
