@@ -273,30 +273,27 @@ sta_result_t mifare1_ReadTest(uint8_t *UID)
                 if(sta==Ok)
                 {
 
-					if(block_num==1&&Get_rfid_ReportAppState()==0)
+					if(block_num==1)
 						{	
 
 							 if(tmpBuf[0]==0xCB&&tmpBuf[1]==0xDA)
 							{
 								uint16_t u16TempData=(tmpBuf[2]/16*10+tmpBuf[2]%16)*100+(tmpBuf[3]/16*10+tmpBuf[3]%16);
 								uint8_t TempData[2]={0};
+								static uint16_t u16BuckData=0;
+								
 								TempData[0]=(u16TempData&0xff00)>>8;
 								TempData[1]=u16TempData&0x00ff;
-								Set_RFID_ReportAppState(1);
-								OctoboProtocolSendPack(O2P_RFID_CMD,TempData,2);
-								printf("\r\ncard num=====%d\r\n",u16TempData);
 
-							}else if(tmpBuf[0]==0xdb&&tmpBuf[1]==0xfb)
-							{
-							
-								uint16_t u16TempData=(tmpBuf[2]/16*10+tmpBuf[2]%16)+(tmpBuf[3]/16*10+tmpBuf[3]%16)*100;
-								uint8_t TempData[2]={0};
-								TempData[0]=(u16TempData&0xff00)>>8;
-								TempData[1]=u16TempData&0x00ff;
-								Set_RFID_ReportAppState(1);
-								OctoboProtocolSendPack(O2P_RFID_CMD,TempData,2);
-								printf("\r\ncard num=====%d\r\n",u16TempData);
 
+			
+								if(Get_rfid_ReportAppState()==0||u16BuckData!=u16TempData)
+									{
+										u16BuckData=u16TempData;										
+										OctoboProtocolSendPack(O2P_RFID_CMD,TempData,2);
+										printf("\r\ncard num=====%d\r\n",u16TempData);
+									}
+								Set_RFID_ReportAppState(1);
 
 							}
 							
@@ -799,8 +796,7 @@ sta_result_t TypeA_test(void)
         uart_newrow();
 
 #endif
-		if(Get_rfid_ReportAppState()!=0)
-			Set_RFID_ReportAppState(1);
+
     }
     else
     {	
