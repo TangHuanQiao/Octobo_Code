@@ -305,6 +305,8 @@ void app_main()
 	
 	LED_Ctr_Init();
 
+	LED_Init_Dispaly();
+
 	RFID_Init();
 
 	ble_spp_server_start();

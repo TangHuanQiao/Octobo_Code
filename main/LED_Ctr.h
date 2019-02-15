@@ -32,7 +32,7 @@ void LED_Ctr_Init(void);
 
 void LED_Brightness_Set(uint8_t Led_Index,uint8_t Brightness);
 
-void LED_Test_Dispaly(void);
+void LED_Init_Dispaly(void);
 
 
 esp_err_t AW9623B_i2c_read(uint8_t RegAddr,uint8_t* pData);

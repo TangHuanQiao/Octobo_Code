@@ -107,15 +107,14 @@ void LED_Brightness_Set(uint8_t Led_Index,uint8_t Brightness)
 
 
 
-void LED_Test_Dispaly(void)
+void LED_Init_Dispaly(void)
 {
     uint8_t TempIndex;
 
 
 	for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
 		{
-			LED_Brightness_Set(TempIndex,5);
-		    vTaskDelay(500/ portTICK_PERIOD_MS);		
+			LED_Brightness_Set(TempIndex,15);	
 		}
 
 
