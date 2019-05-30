@@ -36,6 +36,19 @@ void OctoboProtocolHandler(uint8_t *buf,uint8_t len)
 							}
 						
 						break;
+						
+
+						case P2O_SLEEP_CMD :
+
+						SKY1311_DISABLE();	
+						TOUCH_POWER_OFF();
+						
+						esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
+						printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
+						vTaskDelay(100 / portTICK_PERIOD_MS);	  
+						esp_deep_sleep_start(); 
+
+						break;
 
 
 

@@ -259,9 +259,39 @@ uint16_t GetBaterryState(void)
 }
 
 
-void app_main()
+
+
+void SleepCheck(void)
 {
 
+	static uint32_t TimeCount=0;
+
+	if(get_is_connected()==false)
+	  {
+		  if(TimeCount==0)
+		  LED_Init_Dispaly(); 
+		  
+		  TimeCount++;
+	
+		  if(TimeCount>=11000)
+			  {
+				  esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
+				  printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
+				  vTaskDelay(100 / portTICK_PERIOD_MS); 	
+				  esp_deep_sleep_start(); 
+			  }
+		  
+	  }
+	else
+	  TimeCount=0;
+
+
+
+}
+
+
+void app_main()
+{
 
 	uint8_t HOME_KEY_FliterCnt=0;
 
@@ -305,6 +335,26 @@ void app_main()
 	
 	LED_Ctr_Init();
 
+	BatteyCheck();
+
+	if(GetBaterryState()<4800)//µçÑ¹µÍÓÚ4.8v ÐÝÃß
+		{
+			uint8_t TempIndex;
+			for(TempIndex=0;TempIndex<1*3;TempIndex++)
+			{
+				LED_Brightness_Set(TempIndex,15);	
+			}
+			
+			printf("GetBaterryState low Again sleep\n");
+			vTaskDelay(5000 / portTICK_PERIOD_MS);	
+
+			esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
+			printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
+			vTaskDelay(100 / portTICK_PERIOD_MS);	  
+			esp_deep_sleep_start(); 
+
+		}	
+
 	LED_Init_Dispaly();
 
 	RFID_Init();
@@ -314,10 +364,13 @@ void app_main()
 
 	for(;;)
 	{
-	  
+
 	  BatteyCheck();
 	  keyScanTask();
+	  SleepCheck();
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
+
+	
 	  
 	}
 

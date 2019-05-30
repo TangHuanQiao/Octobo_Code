@@ -1,5 +1,5 @@
 ble_spp_server.o: \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.c \
+ D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/ble_spp_server.c \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/reent.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
@@ -15,7 +15,7 @@ ble_spp_server.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/build/include/sdkconfig.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/hal.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
@@ -110,8 +110,8 @@ ble_spp_server.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_gatt_defs.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_bt_defs.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_bt_main.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/ble_spp_server.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/OctoboProtocol.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -143,7 +143,7 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/build/include/sdkconfig.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
 
@@ -333,7 +333,7 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/blu
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/bt/bluedroid/api/include/api/esp_bt_main.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/ble_spp_server.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h:
-/home/Administrator/esp/Octobo_Code/main/./ble_spp_server.c:
+D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/OctoboProtocol.h:
+/home/Administrator/eSP/Octobo_Code/main/./ble_spp_server.c:

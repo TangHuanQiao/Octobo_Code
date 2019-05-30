@@ -6,6 +6,8 @@
 #define P2O_LED_CMD 'l'
 #define P2O_VOLTAGE_CMD 'v'
 #define P2O_LEDMOD_CMD 'm'
+#define P2O_SLEEP_CMD 's'
+
 
 #define O2P_KEY_CMD 'K'
 #define O2P_RFID_CMD 'N'

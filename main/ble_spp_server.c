@@ -747,3 +747,11 @@ void ble_spp_server_start(void)
 
     return;
 }
+
+
+bool get_is_connected(void)
+{
+	return is_connected;
+}
+	
+	
