@@ -753,5 +753,12 @@ bool get_is_connected(void)
 {
 	return is_connected;
 }
+
+
+void ble_spp_server_Close(void)
+{
+		esp_bluedroid_disable();
+
+}
 	
 	

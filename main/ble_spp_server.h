@@ -63,5 +63,7 @@ enum{
 void ble_spp_server_start(void);
 void ble_spp_server_send(uint8_t* buf, uint32_t length);
 bool get_is_connected(void);
+void ble_spp_server_Close(void);
+
 
 
