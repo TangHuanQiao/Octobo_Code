@@ -285,7 +285,7 @@ void SleepCheck(void)
 			}
 			
 			printf("GetBaterryState low Again sleep\n");
-			vTaskDelay(5000 / portTICK_PERIOD_MS);	
+			vTaskDelay(10000 / portTICK_PERIOD_MS);	
 
 			esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
 			printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");

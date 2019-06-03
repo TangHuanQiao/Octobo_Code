@@ -1,5 +1,5 @@
 Octobo_MainApp.o: \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/Octobo_MainApp.c \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.c \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/_ansi.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/newlib.h \
@@ -24,7 +24,7 @@ Octobo_MainApp.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/build/include/sdkconfig.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/hal.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/xtensa/config/core.h \
@@ -81,26 +81,26 @@ Octobo_MainApp.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/task.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/limits.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/ble_spp_server.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/Keyboard.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Keyboard.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/adc.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/adc_channel.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp_adc_cal/include/esp_adc_cal.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/dac.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/dac_channel.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/OctoboProtocol.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/RFID.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/Octobo_MainApp.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/RFID/sky1311_drv.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/RFID/mcu.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/LED_Ctr.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/I2C_Demo.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/semphr.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/TouchSensor.h
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/TouchSensor.h
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdio.h:
 
@@ -150,7 +150,7 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/build/include/sdkconfig.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/xtensa_config.h:
 
@@ -264,9 +264,9 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/list.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/ble_spp_server.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/ble_spp_server.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/Keyboard.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Keyboard.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/adc.h:
 
@@ -278,19 +278,19 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/soc/esp32/include/soc/dac_channel.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/OctoboProtocol.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/OctoboProtocol.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/RFID.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/Octobo_MainApp.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/Octobo_MainApp.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/RFID/sky1311_drv.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/sky1311_drv.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/RFID/mcu.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/RFID/mcu.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/LED_Ctr.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/I2C_Demo.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
 
@@ -302,5 +302,5 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freert
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/TouchSensor.h:
-/home/Administrator/eSP/Octobo_Code/main/./Octobo_MainApp.c:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/TouchSensor.h:
+/home/Administrator/esp/Octobo_Code/main/./Octobo_MainApp.c:
