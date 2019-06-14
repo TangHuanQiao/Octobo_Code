@@ -107,18 +107,6 @@ void LED_Brightness_Set(uint8_t Led_Index,uint8_t Brightness)
 
 
 
-void LED_Init_Dispaly(void)
-{
-    uint8_t TempIndex;
-
-
-	for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
-		{
-			LED_Brightness_Set(TempIndex,15);	
-		}
-
-
-}
 
 
 

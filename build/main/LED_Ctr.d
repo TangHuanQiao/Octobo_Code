@@ -1,11 +1,11 @@
 LED_Ctr.o: \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/LED_Ctr.c \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/LED_Ctr.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.c \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/_default_types.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/features.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/I2C_Demo.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/esp32/include/esp_types.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/cdefs.h \
@@ -26,7 +26,7 @@ LED_Ctr.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/sched.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/stdio.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h \
- D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/build/include/sdkconfig.h \
+ D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/machine/stdlib.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/alloca.h \
@@ -87,7 +87,7 @@ LED_Ctr.o: \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h \
  D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/LED_Ctr.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/LED_Ctr.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdint.h:
 
@@ -97,7 +97,7 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/sys/_intsup.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/main/I2C_Demo.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/main/I2C_Demo.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/driver/include/driver/i2c.h:
 
@@ -139,7 +139,7 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/platform_include/assert.h:
 
-D:/Project_Source/Octobo/msys32/home/Administrator/eSP/Octobo_Code/build/include/sdkconfig.h:
+D:/Project_Source/Octobo/msys32/home/Administrator/esp/Octobo_Code/build/include/sdkconfig.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/newlib/include/stdlib.h:
 
@@ -258,4 +258,4 @@ D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freert
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/queue.h:
 
 D:/Project_Source/Octobo/msys32/home/Administrator/esp/esp-idf/components/freertos/include/freertos/ringbuf.h:
-/home/Administrator/eSP/Octobo_Code/main/./LED_Ctr.c:
+/home/Administrator/esp/Octobo_Code/main/./LED_Ctr.c:

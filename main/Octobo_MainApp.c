@@ -15,6 +15,8 @@
 #include "Octobo_MainApp.h"
 #include "I2C_Demo.h"
 #include "TouchSensor.h"
+#include "freertos/timers.h"
+
 
 
 static const uint32_t Touch_ChIO_Tab[]={TOUCH_CH9_IO,TOUCH_CH8_IO,TOUCH_CH7_IO,TOUCH_CH6_IO,
@@ -37,6 +39,7 @@ static const adc_unit_t unit = ADC_UNIT_1;
 
 static uint16_t BaterryState=BAT_NORMAL;
 
+static void timer_handle_callback (void);
 
 
 void BSP_Gpio_Init(void)
@@ -261,16 +264,16 @@ uint16_t GetBaterryState(void)
 
 
 
-void SleepCheck(void)
+void wait_connected(void)
 {
-
-	static uint32_t TimeCount=0;
-
-
 	
 	if(GetBaterryState()<4800)//µçÑ¹µÍÓÚ4.8v ÐÝÃß
 		{
 			uint8_t TempIndex;
+			
+			uint8_t TempDatabuf[2]={0};
+			OctoboProtocolSendPack(O2P_VOLTAGE_CMD,TempDatabuf,2);	
+			vTaskDelay(100 / portTICK_PERIOD_MS);	
 			
 
 			ble_spp_server_Close();
@@ -278,43 +281,61 @@ void SleepCheck(void)
 			
 			for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
 			{
-				if(TempIndex<3)
+				if(TempIndex==0)
 				LED_Brightness_Set(TempIndex,15);
 				else
 				LED_Brightness_Set(TempIndex,0);
 			}
+			vTaskDelay(5000 / portTICK_PERIOD_MS);	//ºìµÆ³£ÁÁ5ÃëºóÏ¨Ãð
 			
-			printf("GetBaterryState low Again sleep\n");
-			vTaskDelay(10000 / portTICK_PERIOD_MS);	
-
+			printf("GetBaterryState low Entering deep sleep\n");
 			esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
-			printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
 			vTaskDelay(100 / portTICK_PERIOD_MS);	  
 			esp_deep_sleep_start(); 
 
 		}	
-
-
-	
-
-	if(get_is_connected()==false)
-	  {
-		  if(TimeCount==0)
-		  LED_Init_Dispaly(); 
-		  
-		  TimeCount++;
-	
-		  if(TimeCount>=11000)
-			  {
-				  esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
-				  printf("KEY_VAL_POWER_PRESS Entering deep sleep\n");
-				  vTaskDelay(100 / portTICK_PERIOD_MS); 	
-				  esp_deep_sleep_start(); 
-			  }
-		  
-	  }
 	else
-	  TimeCount=0;
+		{
+			static uint32_t TimeCount=0;
+				
+			if(get_is_connected()==true)
+			  TimeCount=0;
+			  
+			if(get_is_connected()==false)
+			  {
+
+			  
+                  if(TimeCount==0)
+                  	{
+						uint8_t TempIndex;
+						for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
+						{
+						  LED_Brightness_Set(TempIndex,15);	
+						}
+                  	}
+
+
+
+
+
+				  
+				  TimeCount++;
+			
+				  if(TimeCount>=120)
+					  {
+						  printf("disconnected long time ,Entering deep sleep\n");
+						  esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
+						  vTaskDelay(100 / portTICK_PERIOD_MS); 	
+						  esp_deep_sleep_start(); 
+					  }
+				  
+			  }
+
+
+
+
+		}
+
 
 
 
@@ -325,7 +346,7 @@ void app_main()
 {
 
 	uint8_t HOME_KEY_FliterCnt=0;
-
+	TimerHandle_t timer_handle = NULL;
 
 	esp_sleep_enable_ext0_wakeup(HOME_KEY_IO,1);
 
@@ -365,23 +386,23 @@ void app_main()
 	i2c_demo_init();
 	
 	LED_Ctr_Init();
-	
-	BatteyCheck();
-
-	if(GetBaterryState()>4800)
-	LED_Init_Dispaly();
 
 	RFID_Init();
 
 	ble_spp_server_start();
+	
+	timer_handle_callback();
+
+	timer_handle =  xTimerCreate(NULL, 1000/ portTICK_PERIOD_MS, pdTRUE, NULL, (void *)timer_handle_callback);
+
+    xTimerStart(timer_handle, 0);
 
 
 	for(;;)
 	{
 
-	  BatteyCheck();
 	  keyScanTask();
-	  SleepCheck();
+
 	  vTaskDelay(KEY_TIME_SCAN/ portTICK_PERIOD_MS);
 	  
 	}
@@ -391,7 +412,15 @@ void app_main()
 
 
 
+void timer_handle_callback (void)
+{
 
+  BatteyCheck();
+
+  wait_connected();
+
+
+}
 
 
 
