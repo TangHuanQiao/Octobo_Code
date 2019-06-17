@@ -107,6 +107,17 @@ void LED_Brightness_Set(uint8_t Led_Index,uint8_t Brightness)
 
 
 
+void LED_All_Clean(void)
+{
+
+	uint8_t TempIndex;
+	for(TempIndex=0;TempIndex<RGB_LED_MaxNUM*3;TempIndex++)
+	{
+	LED_Brightness_Set(TempIndex,0); 
+	}
+
+
+}
 
 
 
