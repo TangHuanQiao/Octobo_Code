@@ -315,13 +315,18 @@ void wait_connected(void)
                   	}else
                   		{
 
-						  uint8_t LedOnNum;
-						  LedOnNum=(TimeCount-1)%5;
 
-						  if(LedOnNum==0)
-							LED_All_Clean();
-						  
-						  LED_Brightness_Set(LedOnNum*3+1,15);	
+
+						  if(TimeCount==1)
+						  	{
+							 LED_All_Clean();
+							 LED_Brightness_Set(1,15);
+						  	}
+
+						  if(TimeCount%2==0)
+						  LED_Brightness_Set(4,15);
+						  else
+						  LED_Brightness_Set(4,0);
 						  
                   		}
 				
